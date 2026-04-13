@@ -34,12 +34,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 .wbtn-ico{font-size:15px;}
 .wbtn-t{font-size:13px;font-weight:600;color:var(--t);}
 /* NAV */
-.nav{display:flex;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--b);position:fixed;bottom:0;left:0;right:0;z-index:90;padding-bottom:env(safe-area-inset-bottom,0px);}
-.nb{flex:1;padding:10px 2px 8px;border:none;background:transparent;color:var(--m);font-size:9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .15s;font-weight:500;}
-.nb .i{font-size:18px;line-height:1;}
+.nav{display:flex;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--b);position:fixed;bottom:0;left:0;right:0;z-index:90;padding-bottom:env(safe-area-inset-bottom,16px);}
+.nb{flex:1;padding:12px 2px 10px;border:none;background:transparent;color:var(--m);font-size:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .15s;font-weight:600;}
+.nb .i{font-size:22px;line-height:1;}
 .nb.on{color:var(--t);}
 /* SCREENS */
-.sc{display:none;padding:14px 14px 88px;}
+.sc{display:none;padding:14px 14px 100px;}
 .sc.on{display:block;}
 /* SECTION LABEL */
 .lbl{font-size:11px;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
@@ -177,6 +177,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 .sh-tracker{background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#064e3b;}
 .sh-wa{background:linear-gradient(135deg,#cffafe,#a5f3fc);color:#164e63;}
 
+/* WEATHER HOURLY */
+.w-day-pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;scrollbar-width:none;}
+.w-day-pills::-webkit-scrollbar{display:none;}
+.w-day-pill{flex-shrink:0;padding:6px 13px;border-radius:16px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;cursor:pointer;font-weight:500;}
+.w-day-pill.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:700;}
+.w-detail-card{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.w-detail-header{padding:14px 16px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;}
+.w-detail-title{font-size:15px;font-weight:800;}
+.w-detail-sub{font-size:12px;color:var(--m);}
+.w-hourly-scroll{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;scrollbar-width:none;}
+.w-hourly-scroll::-webkit-scrollbar{display:none;}
+.wh-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:52px;padding:10px 6px;border-radius:12px;border:1px solid var(--b);background:var(--bg);}
+.wh-item.now{background:var(--t);border-color:var(--t);}
+.wh-time{font-size:11px;font-weight:600;color:var(--m);}
+.wh-item.now .wh-time{color:rgba(255,255,255,.7);}
+.wh-ico{font-size:20px;}
+.wh-temp{font-size:14px;font-weight:800;color:var(--t);}
+.wh-item.now .wh-temp{color:#fff;}
+.wh-rain{font-size:10px;color:var(--blue);font-weight:600;}
+.wh-item.now .wh-rain{color:rgba(255,255,255,.8);}
+.w-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 14px;}
+.w-stat{background:var(--bg);border-radius:10px;padding:10px;text-align:center;}
+.w-stat-ico{font-size:18px;margin-bottom:4px;}
+.w-stat-val{font-size:14px;font-weight:800;color:var(--t);}
+.w-stat-lbl{font-size:10px;color:var(--m);margin-top:2px;}
 /* WHATSAPP */
 .lt{display:flex;gap:5px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none;}
 .lt::-webkit-scrollbar{display:none;}
@@ -228,6 +253,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
   <div class="sec-header sh-meteo"><span class="sec-ico">🌤️</span><div><div class="sec-title">Météo Ibiza</div><div class="sec-sub">Prévisions 7 jours en direct</div></div></div>
   <div class="w-alert" id="walert">⚠️ Pluie prévue — évite les boat parties et excursions Formentera</div>
   <div class="wg" id="wg"></div>
+  <div class="w-day-pills" id="w-day-pills"></div>
+  <div id="w-detail"></div>
   <div class="w-advice" id="wadv"><div class="wa-title">✅ Produits recommandés</div><div id="wadv-c"></div></div>
 </div>
 
@@ -406,9 +433,9 @@ const FICHES={
 
 const LANGS=[{c:'fr',f:'🇫🇷',n:'FR'},{c:'en',f:'🇬🇧',n:'EN'},{c:'es',f:'🇪🇸',n:'ES'},{c:'it',f:'🇮🇹',n:'IT'},{c:'pt',f:'🇧🇷',n:'PT'}];
 const MAP_URLS={
-  clubs:'https://www.google.com/maps/embed?pb=!1m2!1m1!1s0x0%3A0x0!2m13!1m12!1m3!1d55000!2d1.4000!3d38.9200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2ses!4v1700000000000!5m2!1sfr!2ses',
-  products:'https://www.google.com/maps/embed?pb=!1m2!1m1!1s0x0%3A0x0!2m13!1m12!1m3!1d55000!2d1.4200!3d38.9000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2ses!4v1700000000001!5m2!1sfr!2ses',
-  plages:'https://www.google.com/maps/embed?pb=!1m2!1m1!1s0x0%3A0x0!2m13!1m12!1m3!1d80000!2d1.3900!3d38.9800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2ses!4v1700000000002!5m2!1sfr!2ses'
+  clubs:'https://www.openstreetmap.org/export/embed.html?bbox=1.29%2C38.87%2C1.52%2C38.97&layer=mapnik&marker=38.9200%2C1.4200',
+  products:'https://www.openstreetmap.org/export/embed.html?bbox=1.38%2C38.87%2C1.47%2C38.92&layer=mapnik&marker=38.9067%2C1.4325',
+  plages:'https://www.openstreetmap.org/export/embed.html?bbox=1.25%2C38.86%2C1.55%2C39.00&layer=mapnik'
 };
 
 // STATE
@@ -538,16 +565,30 @@ function renderMapList(){
 // WEATHER — Open-Meteo API (gratuit, sans clé)
 const WMO={0:'Ensoleillé',1:'Peu nuageux',2:'Partiellement nuageux',3:'Couvert',45:'Brouillard',48:'Givre',51:'Bruine légère',53:'Bruine',55:'Bruine forte',61:'Pluie légère',63:'Pluie',65:'Pluie forte',71:'Neige légère',73:'Neige',75:'Neige forte',80:'Averses légères',81:'Averses',82:'Averses fortes',85:'Averses neige',86:'Averses neige fortes',95:'Orage',96:'Orage grêle',99:'Orage grêle forte'};
 const WICO={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌧️',55:'🌧️',61:'🌦️',63:'🌧️',65:'⛈️',71:'🌨️',73:'❄️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+let hourlyWeather=[];
+let selWeatherDay=0;
+
 async function loadWeather(){
   try{
-    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.9067&longitude=1.4325&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum&timezone=Europe/Madrid&forecast_days=7');
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.9067&longitude=1.4325&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum,windspeed_10m_max,uv_index_max&hourly=temperature_2m,weathercode,precipitation_probability,windspeed_10m&timezone=Europe/Madrid&forecast_days=7');
     const d=await r.json();
     weather=d.daily.time.map((t,i)=>({
       date:new Date(t),
       max:Math.round(d.daily.temperature_2m_max[i]),
       min:Math.round(d.daily.temperature_2m_min[i]),
       code:d.daily.weathercode[i],
-      rain:d.daily.precipitation_sum[i]>1
+      rain:d.daily.precipitation_sum[i]>1,
+      wind:Math.round(d.daily.windspeed_10m_max[i]),
+      uv:Math.round(d.daily.uv_index_max[i]||0)
+    }));
+    hourlyWeather=d.hourly.time.map((t,i)=>({
+      time:t,
+      hour:parseInt(t.split('T')[1]),
+      day:t.split('T')[0],
+      temp:Math.round(d.hourly.temperature_2m[i]),
+      code:d.hourly.weathercode[i],
+      rain:d.hourly.precipitation_probability[i],
+      wind:Math.round(d.hourly.windspeed_10m[i])
     }));
     document.getElementById('wico').textContent=WICO[weather[0].code]||'☀️';
     document.getElementById('wt').textContent=weather[0].max+'°';
@@ -558,21 +599,35 @@ async function loadWeather(){
     renderWeather();
   }
 }
+
 function renderWeather(){
   const JOURS=['Auj.','Dem.','Mar.','Mer.','Jeu.','Ven.','Sam.'];
+  const JOURSFULL=['Aujourd\'hui','Demain','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
   if(!weather.length){
     document.getElementById('wg').innerHTML=JOURS.map((j,i)=>`<div class="wd ${i===0?'today':''}"><div class="wd-day">${j}</div><div class="wd-ico">⏳</div><div class="wd-t">--</div><div class="wd-d">chargement</div></div>`).join('');
+    document.getElementById('w-day-pills').innerHTML='';
+    document.getElementById('w-detail').innerHTML='';
     return;
   }
   const hasRain=weather.slice(0,2).some(w=>w.rain);
   document.getElementById('walert').classList.toggle('on',hasRain);
+
+  // 7-day grid — clickable
   document.getElementById('wg').innerHTML=weather.map((w,i)=>`
-    <div class="wd ${i===0?'today':''}">
+    <div class="wd ${i===0?'today':''} ${i===selWeatherDay?'today':''}" onclick="selWDay(${i})" style="cursor:pointer;${i===selWeatherDay?'border-color:#1a1a1a;border-width:2px;':'' }">
       <div class="wd-day">${JOURS[i]||'J+'+(i+1)}</div>
       <div class="wd-ico">${WICO[w.code]||'🌡️'}</div>
       <div class="wd-t">${w.max}°</div>
-      <div class="wd-d">${WMO[w.code]||'--'}</div>
+      <div class="wd-d" style="font-size:9px;">${w.min}°</div>
     </div>`).join('');
+
+  // Day pills
+  document.getElementById('w-day-pills').innerHTML=weather.map((w,i)=>`
+    <button class="w-day-pill ${i===selWeatherDay?'on':''}" onclick="selWDay(${i})">${JOURS[i]} ${w.max}°</button>`).join('');
+
+  renderWeatherDetail();
+
+  // Advice
   const adv=document.getElementById('wadv-c');
   const today=weather[0];
   if(today.rain){
@@ -582,6 +637,46 @@ function renderWeather(){
     adv.innerHTML=PRODUCTS.map(p=>`<div class="wa-row">✅ ${p.emo} ${p.name}</div>`).join('');
     document.querySelector('.wa-title').textContent='☀️ Beau temps — tous les produits recommandés';
   }
+}
+
+function selWDay(i){
+  selWeatherDay=i;
+  renderWeather();
+}
+
+function renderWeatherDetail(){
+  if(!weather.length||!hourlyWeather.length)return;
+  const JOURS=['Aujourd\'hui','Demain','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const w=weather[selWeatherDay];
+  const dayStr=w.date.toISOString().split('T')[0];
+  const hours=hourlyWeather.filter(h=>h.day===dayStr);
+  const nowH=new Date().getHours();
+
+  const hoursHTML=hours.map(h=>{
+    const isNow=selWeatherDay===0&&h.hour===nowH;
+    return`<div class="wh-item ${isNow?'now':''}">
+      <div class="wh-time">${String(h.hour).padStart(2,'0')}h</div>
+      <div class="wh-ico">${WICO[h.code]||'🌡️'}</div>
+      <div class="wh-temp">${h.temp}°</div>
+      <div class="wh-rain">${h.rain}%</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('w-detail').innerHTML=`
+    <div class="w-detail-card">
+      <div class="w-detail-header">
+        <div>
+          <div class="w-detail-title">${WICO[w.code]} ${JOURS[selWeatherDay]||'J+'+(selWeatherDay+1)} — ${WMO[w.code]||''}</div>
+          <div class="w-detail-sub">${w.min}° min · ${w.max}° max</div>
+        </div>
+      </div>
+      <div class="w-hourly-scroll">${hoursHTML}</div>
+      <div class="w-stats-grid">
+        <div class="w-stat"><div class="w-stat-ico">🌬️</div><div class="w-stat-val">${w.wind} km/h</div><div class="w-stat-lbl">Vent</div></div>
+        <div class="w-stat"><div class="w-stat-ico">🌡️</div><div class="w-stat-val">${w.min}–${w.max}°</div><div class="w-stat-lbl">Températures</div></div>
+        <div class="w-stat"><div class="w-stat-ico">☀️</div><div class="w-stat-val">UV ${w.uv}</div><div class="w-stat-lbl">Indice UV</div></div>
+      </div>
+    </div>`;
 }
 
 // DJs COLLAPSIBLE
