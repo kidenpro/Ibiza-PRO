@@ -1,4 +1,12 @@
 {
-  "crons": [{ "path": "/api/events", "schedule": "0 8 * * *" }],
-  "rewrites": [{ "source": "/", "destination": "/public/index.html" }]
+  "version": 2,
+  "builds": [
+    { "src": "api/public/index.html", "use": "@vercel/static" },
+    { "src": "events.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "api/public/index.html" },
+    { "src": "/api/events", "dest": "events.js" }
+  ],
+  "crons": [{ "path": "/api/events", "schedule": "0 8 * * *" }]
 }
