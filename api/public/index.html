@@ -6,243 +6,222 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CILEX PRO">
-<meta name="theme-color" content="#09090f">
+<meta name="theme-color" content="#f5f5f7">
 <title>CILEX PRO — Ibiza 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-:root{
-  --g:#1a1a1a;--gl:#333;
-  --bg:#f5f5f7;--card:#ffffff;--b:#e5e5ea;
-  --t:#1c1c1e;--m:#8e8e93;
-  --acc:#1a1a1a;--acc2:#3a3a3c;
-  --green:#34c759;--amb:#ff9500;--red:#ff3b30;--blue:#007aff;
-}
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;overflow-x:hidden;}
-/* SPLASH */
-#splash{position:fixed;inset:0;background:#fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease;}
+:root{--bg:#f5f5f7;--card:#fff;--b:#e5e5ea;--t:#1c1c1e;--m:#8e8e93;--green:#34c759;--amb:#ff9500;--red:#ff3b30;--blue:#007aff;--pur:#7c3aed;}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;overflow-x:hidden;}
+#splash{position:fixed;inset:0;background:#fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s;}
 #splash.out{opacity:0;pointer-events:none;}
 .sl{font-size:44px;font-weight:800;letter-spacing:2px;color:#1a1a1a;}
-.ss{font-size:11px;color:#aaa;letter-spacing:3px;margin-top:6px;font-weight:500;}
-.sb{width:140px;height:1.5px;background:#e5e5ea;border-radius:2px;margin-top:40px;overflow:hidden;}
+.ss{font-size:11px;color:#aaa;letter-spacing:3px;margin-top:6px;}
+.sb{width:140px;height:2px;background:#eee;border-radius:2px;margin-top:40px;overflow:hidden;}
 .sf{height:100%;background:#1a1a1a;animation:sf 1.8s ease forwards;}
 @keyframes sf{from{width:0}to{width:100%}}
-/* HEADER */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;background:rgba(245,245,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:sticky;top:0;z-index:90;border-bottom:1px solid var(--b);}
-.hdr-logo{font-size:18px;font-weight:800;letter-spacing:.5px;color:var(--t);}
-.hdr-sub{font-size:9px;color:var(--m);letter-spacing:1.5px;margin-top:2px;font-weight:500;}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;background:rgba(245,245,247,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:sticky;top:0;z-index:90;border-bottom:1px solid var(--b);}
+.hdr-logo{font-size:18px;font-weight:800;color:var(--t);}
+.hdr-sub{font-size:9px;color:var(--m);letter-spacing:1.5px;margin-top:2px;}
 .wbtn{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--b);border-radius:20px;padding:6px 12px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.06);}
-.wbtn-ico{font-size:15px;}
-.wbtn-t{font-size:13px;font-weight:600;color:var(--t);}
-/* NAV */
 .nav{display:flex;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--b);position:fixed;bottom:0;left:0;right:0;z-index:90;padding-bottom:env(safe-area-inset-bottom,16px);}
-.nb{flex:1;padding:12px 2px 10px;border:none;background:transparent;color:var(--m);font-size:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .15s;font-weight:600;}
-.nb .i{font-size:22px;line-height:1;}
+.nb{flex:1;padding:10px 2px 8px;border:none;background:transparent;color:var(--m);font-size:9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600;}
+.nb .i{font-size:20px;line-height:1;}
 .nb.on{color:var(--t);}
-/* SCREENS */
-.sc{display:none;padding:14px 14px 100px;}
+.nb-clubs.on{color:#7c3aed;}.nb-products.on{color:#0369a1;}.nb-map.on{color:#15803d;}.nb-meteo.on{color:#d97706;}.nb-tracker.on{color:#16a34a;}.nb-clients.on{color:#db2777;}.nb-wa.on{color:#0891b2;}
+.sc{display:none;padding:12px 12px 95px;}
 .sc.on{display:block;}
-/* SECTION LABEL */
-.lbl{font-size:11px;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
-/* DAY PILLS */
-.dp{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;scrollbar-width:none;}
-.dp::-webkit-scrollbar{display:none;}
-.dp-p{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;cursor:pointer;white-space:nowrap;font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.dp-p.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:700;}
-/* CLUB CARD */
-.cc{background:var(--card);border:1px solid var(--b);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.cc-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;}
-.cc-left{display:flex;align-items:center;gap:10px;}
-.cc-emo{font-size:0;width:36px;height:36px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.cc-nm{font-size:15px;font-weight:700;color:var(--t);}
-.cc-right{display:flex;align-items:center;gap:8px;}
-.cc-pr{font-size:16px;font-weight:800;}
-.cc-arr{font-size:10px;color:var(--m);transition:transform .2s;}
-.cc-arr.open{transform:rotate(180deg);}
-.pr-lo{color:var(--green);}
-.pr-mi{color:var(--amb);}
-.pr-hi{color:var(--red);}
-.pr-cl{color:var(--m);}
-.cc-body{border-top:1px solid var(--b);padding:14px 16px;background:#fafafa;}
-.cc-dj{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:10px;}
-.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
-.tag{padding:3px 9px;border-radius:20px;font-size:11px;background:var(--bg);color:var(--m);border:1px solid var(--b);font-weight:500;}
-.tag.loc{background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9;}
-.tag.tm{background:#fff8e1;color:#e65100;border-color:#ffecb3;}
-.cc-gl{background:#f8f8f8;border:1px solid var(--b);border-radius:10px;padding:8px 12px;font-size:11px;color:var(--m);margin-top:6px;font-weight:500;}
-.cc-desc{font-size:11px;color:var(--m);margin-top:8px;line-height:1.5;}
-.cc-transport{background:#f0f4ff;border:1px solid #dce8ff;border-radius:10px;padding:10px 12px;margin-top:10px;}
-.transport-title{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
-.transport-row{font-size:11px;color:#555;padding:2px 0;}
-/* PRODUCT CARD */
-.pc{background:var(--card);border:1px solid var(--b);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.pc-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;}
-.pc-info{display:flex;align-items:center;gap:10px;}
-.pc-emo{width:40px;height:40px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;border:1px solid var(--b);flex-shrink:0;}
-.pc-nm{font-size:14px;font-weight:700;color:var(--t);}
-.pc-meta{font-size:11px;color:var(--m);margin-top:2px;}
-.pc-right{text-align:right;}
-.pc-pr{font-size:18px;font-weight:800;color:var(--t);}
-.pc-com{font-size:11px;color:var(--green);font-weight:600;}
-.pc-body{border-top:1px solid var(--b);padding:14px 16px;background:#fafafa;}
-.pc-inc{list-style:none;}
-.pc-inc li{font-size:12px;color:#555;padding:3px 0 3px 16px;position:relative;line-height:1.5;}
-.pc-inc li::before{content:"–";position:absolute;left:0;color:var(--m);}
-.pc-weather{display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 11px;border-radius:10px;font-size:11px;font-weight:500;}
-.pw-ok{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9;}
-.pw-no{background:#fff3e0;color:#e65100;border:1px solid #ffe0b2;}
-/* MAP */
-.map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--b);margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.map-tabs{display:flex;gap:6px;margin-bottom:12px;}
-.mt{flex:1;padding:9px;border-radius:12px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;font-weight:600;cursor:pointer;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.mt.on{background:var(--t);color:#fff;border-color:var(--t);}
-.map-frame{width:100%;height:380px;border:none;display:block;}
-.map-list{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.ml-item{display:flex;align-items:center;gap:10px;padding:11px 15px;border-bottom:1px solid var(--b);}
-.ml-item:last-child{border-bottom:none;}
-.ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.ml-name{font-size:13px;font-weight:600;color:var(--t);}
-.ml-sub{font-size:11px;color:var(--m);}
-.ml-right{margin-left:auto;font-size:12px;color:var(--amb);font-weight:600;}
-/* WEATHER */
-.wg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;}
-.wd{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:10px 6px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.wd.today{border-color:var(--t);border-width:1.5px;}
-.wd-day{font-size:10px;color:var(--m);margin-bottom:5px;font-weight:500;}
-.wd-ico{font-size:22px;margin-bottom:4px;line-height:1;}
-.wd-t{font-size:15px;font-weight:800;color:var(--t);}
-.wd-d{font-size:9px;color:var(--m);margin-top:2px;}
-.w-alert{background:#fff3e0;border:1px solid #ffe0b2;border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:12px;color:#e65100;display:none;font-weight:500;}
-.w-alert.on{display:block;}
-.w-advice{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.wa-title{font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;}
-.wa-row{font-size:12px;color:var(--m);padding:3px 0;}
-/* DJs — COLLAPSIBLE PER CLUB */
-.dj-club{background:var(--card);border:1px solid var(--b);border-radius:16px;margin-bottom:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.dj-club-h{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;cursor:pointer;}
-.dj-club-name{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--t);}
-.dj-club-arr{font-size:10px;color:var(--m);transition:transform .2s;}
-.dj-club-arr.open{transform:rotate(180deg);}
-.dj-rows{border-top:1px solid var(--b);background:#fafafa;}
-.dj-r{display:flex;justify-content:space-between;align-items:center;padding:9px 16px;border-bottom:1px solid var(--b);}
-.dj-r:last-child{border-bottom:none;}
-.dj-r-day{font-size:11px;color:var(--m);width:60px;flex-shrink:0;font-weight:500;}
-.dj-r-name{font-size:13px;font-weight:600;color:var(--blue);}
-.dj-r-price{font-size:12px;font-weight:700;margin-left:auto;padding-left:8px;}
-/* TRACKER */
-.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
-.sc-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.sc-lbl{font-size:10px;color:var(--m);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;}
-.sc-val{font-size:24px;font-weight:800;color:var(--t);}
-.gold{color:var(--t);}
-.gre{color:var(--green);}
-.add-btn{width:100%;padding:14px;background:var(--t);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:14px;letter-spacing:.3px;}
-.si{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.si-l{font-size:13px;font-weight:600;color:var(--t);}
-.si-m{font-size:11px;color:var(--m);margin-top:2px;}
-.si-r{text-align:right;}
-.si-p{font-size:15px;font-weight:800;color:var(--t);}
-.si-c{font-size:11px;color:var(--green);font-weight:600;}
-.empty{text-align:center;padding:40px;color:var(--m);font-size:13px;}
-/* MODAL */
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none;align-items:flex-end;}
-.mo.on{display:flex;}
-.mo-box{background:#fff;border-radius:24px 24px 0 0;border-top:1px solid var(--b);padding:20px 16px 44px;width:100%;max-height:88vh;overflow-y:auto;}
-.mo-title{font-size:17px;font-weight:800;margin-bottom:16px;color:var(--t);}
-.mi{width:100%;padding:12px 14px;background:var(--bg);border:1px solid var(--b);border-radius:12px;color:var(--t);font-size:14px;margin-bottom:8px;-webkit-appearance:none;}
-.po{padding:12px 14px;background:var(--bg);border:1px solid var(--b);border-radius:12px;margin-bottom:7px;cursor:pointer;display:flex;justify-content:space-between;}
-.po.on{border-color:var(--t);background:#f0f0f0;}
-.po-l{font-size:13px;font-weight:600;color:var(--t);}
-.po-r{font-size:12px;color:var(--t);font-weight:700;}
-.mc{width:100%;padding:14px;background:var(--t);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;}
-.mca{width:100%;padding:12px;background:transparent;border:1px solid var(--b);border-radius:14px;color:var(--m);font-size:14px;cursor:pointer;margin-top:8px;}
-/* NAV COLORED ACTIVE STATES */
-.nb-clubs.on{color:#7c3aed;}
-.nb-products.on{color:#0369a1;}
-.nb-map.on{color:#15803d;}
-.nb-meteo.on{color:#d97706;}
-.nb-djs.on{color:#db2777;}
-.nb-tracker.on{color:#16a34a;}
-.nb-wa.on{color:#0891b2;}
-
-/* SECTION HEADERS */
-.sec-header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;margin-bottom:14px;}
-.sec-header .sec-ico{font-size:22px;}
-.sec-header .sec-title{font-size:16px;font-weight:800;}
-.sec-header .sec-sub{font-size:11px;margin-top:1px;opacity:.7;}
+.lbl{font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.sec-hdr{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;margin-bottom:12px;}
+.sec-hdr .si{font-size:20px;}.sec-hdr .st{font-size:15px;font-weight:800;}.sec-hdr .ss2{font-size:11px;margin-top:1px;opacity:.75;}
 .sh-clubs{background:linear-gradient(135deg,#ede9fe,#ddd6fe);color:#4c1d95;}
 .sh-products{background:linear-gradient(135deg,#e0f2fe,#bae6fd);color:#0c4a6e;}
-.sh-map{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#14532d;}
+.sh-map{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;}
 .sh-meteo{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;}
-.sh-djs{background:linear-gradient(135deg,#fce7f3,#fbcfe8);color:#831843;}
 .sh-tracker{background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#064e3b;}
+.sh-clients{background:linear-gradient(135deg,#fce7f3,#fbcfe8);color:#831843;}
 .sh-wa{background:linear-gradient(135deg,#cffafe,#a5f3fc);color:#164e63;}
-
-/* WEATHER HOURLY */
-.w-day-pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;scrollbar-width:none;}
-.w-day-pills::-webkit-scrollbar{display:none;}
-.w-day-pill{flex-shrink:0;padding:6px 13px;border-radius:16px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;cursor:pointer;font-weight:500;}
-.w-day-pill.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:700;}
-.w-detail-card{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.w-detail-header{padding:14px 16px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;}
-.w-detail-title{font-size:15px;font-weight:800;}
-.w-detail-sub{font-size:12px;color:var(--m);}
-.w-hourly-scroll{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;scrollbar-width:none;}
-.w-hourly-scroll::-webkit-scrollbar{display:none;}
-.wh-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:52px;padding:10px 6px;border-radius:12px;border:1px solid var(--b);background:var(--bg);}
-.wh-item.now{background:var(--t);border-color:var(--t);}
-.wh-time{font-size:11px;font-weight:600;color:var(--m);}
-.wh-item.now .wh-time{color:rgba(255,255,255,.7);}
-.wh-ico{font-size:20px;}
-.wh-temp{font-size:14px;font-weight:800;color:var(--t);}
-.wh-item.now .wh-temp{color:#fff;}
-.wh-rain{font-size:10px;color:var(--blue);font-weight:600;}
-.wh-item.now .wh-rain{color:rgba(255,255,255,.8);}
-.w-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 14px;}
-.w-stat{background:var(--bg);border-radius:10px;padding:10px;text-align:center;}
-.w-stat-ico{font-size:18px;margin-bottom:4px;}
-.w-stat-val{font-size:14px;font-weight:800;color:var(--t);}
-.w-stat-lbl{font-size:10px;color:var(--m);margin-top:2px;}
-/* DJ SUB-SECTION inside club card */
-.dj-sub{border-top:1px solid var(--b);background:#f8f7ff;}
-.dj-sub-h{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;cursor:pointer;background:#f0eefe;}
-.dj-sub-title{font-size:12px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.06em;}
+/* DAY PILLS */
+.dp{display:flex;gap:5px;overflow-x:auto;padding-bottom:8px;margin-bottom:12px;scrollbar-width:none;}
+.dp::-webkit-scrollbar{display:none;}
+.dp-p{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;cursor:pointer;font-weight:500;}
+.dp-p.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a;font-weight:700;}
+/* CLUB CARD */
+.cc{background:var(--card);border:1px solid var(--b);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.cc-h{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;cursor:pointer;}
+.cc-left{display:flex;align-items:center;gap:10px;}
+.cc-emo{width:36px;height:36px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.cc-nm{font-size:15px;font-weight:700;}
+.cc-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;margin-top:2px;display:inline-block;}
+.badge-open{background:#e8f5e9;color:#2e7d32;}
+.badge-soon{background:#fff8e1;color:#e65100;}
+.badge-closed{background:#fce4ec;color:#b71c1c;}
+.cc-pr{font-size:16px;font-weight:800;}
+.cc-arr{font-size:10px;color:var(--m);transition:transform .2s;margin-left:4px;}
+.cc-arr.open{transform:rotate(180deg);}
+.pr-lo{color:var(--green);}.pr-mi{color:var(--amb);}.pr-hi{color:var(--red);}.pr-cl{color:var(--m);}
+.cc-body{border-top:1px solid var(--b);padding:13px 15px;background:#fafafa;}
+.cc-tonight{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;}
+.tag{padding:3px 8px;border-radius:12px;font-size:11px;background:var(--bg);color:var(--m);border:1px solid var(--b);font-weight:500;}
+.tag.loc{background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9;}
+.tag.tm{background:#fff8e1;color:#e65100;border-color:#ffecb3;}
+.cc-gl{background:#f8f8ff;border:1px solid #e0d9ff;border-radius:10px;padding:7px 11px;font-size:11px;color:#4c1d95;margin-top:6px;}
+.cc-transport{background:#f0f4ff;border:1px solid #dce8ff;border-radius:10px;padding:9px 12px;margin-top:8px;}
+.tr-title{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.tr-row{font-size:11px;color:#555;padding:2px 0;}
+/* DJ SUB */
+.dj-sub{border-top:1px solid var(--b);}
+.dj-sub-h{display:flex;justify-content:space-between;align-items:center;padding:9px 15px;cursor:pointer;background:#f0eefe;}
+.dj-sub-title{font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.06em;}
 .dj-sub-arr{font-size:10px;color:#7c3aed;transition:transform .2s;}
 .dj-sub-arr.open{transform:rotate(180deg);}
-.dj-week-rows{padding:4px 0;}
-.dj-w-row{display:flex;justify-content:space-between;align-items:center;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.04);}
+.dj-rows{background:#f8f7ff;}
+.dj-w-row{display:flex;justify-content:space-between;align-items:center;padding:8px 15px;border-bottom:1px solid rgba(0,0,0,.04);}
 .dj-w-row:last-child{border-bottom:none;}
-.dj-w-row.today-row{background:#ede9fe;}
-.dj-w-day{font-size:11px;color:var(--m);width:50px;flex-shrink:0;font-weight:500;}
-.dj-w-row.today-row .dj-w-day{color:#7c3aed;font-weight:700;}
+.dj-w-row.tod{background:#ede9fe;}
+.dj-w-day{font-size:11px;color:var(--m);width:46px;flex-shrink:0;font-weight:500;}
+.dj-w-row.tod .dj-w-day{color:#7c3aed;font-weight:700;}
 .dj-w-name{font-size:12px;font-weight:600;color:var(--t);flex:1;text-align:center;}
-.dj-w-price{font-size:12px;font-weight:700;min-width:40px;text-align:right;}
-
-/* MAP PINS custom list */
-.map-pin-list{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-top:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.map-pin-item{display:flex;align-items:center;gap:12px;padding:12px 15px;border-bottom:1px solid var(--b);cursor:pointer;transition:background .1s;}
+.dj-w-price{font-size:11px;font-weight:700;min-width:36px;text-align:right;}
+/* PRODUCTS */
+.pc{background:var(--card);border:1px solid var(--b);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.pc-h{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;cursor:pointer;}
+.pc-img{width:50px;height:50px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+.pc-nm{font-size:14px;font-weight:700;}
+.pc-meta{font-size:11px;color:var(--m);margin-top:2px;}
+.pc-pr{font-size:18px;font-weight:800;color:#1a1a1a;}
+.pc-com{font-size:11px;color:var(--green);font-weight:600;}
+.pc-body{border-top:1px solid var(--b);padding:13px 15px;background:#fafafa;}
+.prod-addr{display:flex;gap:8px;background:#f0f4ff;border:1px solid #dce8ff;border-radius:10px;padding:9px 12px;margin-bottom:8px;}
+.prod-addr-lbl{font-size:10px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.prod-addr-txt{font-size:12px;color:#1e3a5f;line-height:1.5;}
+.pc-inc{list-style:none;margin-bottom:8px;}
+.pc-inc li{font-size:12px;color:#555;padding:3px 0 3px 14px;position:relative;line-height:1.5;}
+.pc-inc li::before{content:"–";position:absolute;left:0;color:var(--m);}
+.pw{display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:10px;font-size:11px;font-weight:500;margin-bottom:8px;}
+.pw-ok{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9;}
+.pw-no{background:#fff3e0;color:#e65100;border:1px solid #ffe0b2;}
+/* PITCH MODE */
+.pitch-card{background:var(--card);border:1px solid var(--b);border-radius:20px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.pitch-img{width:100%;height:180px;object-fit:cover;display:block;}
+.pitch-img-placeholder{width:100%;height:180px;display:flex;align-items:center;justify-content:center;font-size:60px;}
+.pitch-body{padding:14px 16px;}
+.pitch-name{font-size:20px;font-weight:800;margin-bottom:4px;}
+.pitch-sub{font-size:13px;color:var(--m);margin-bottom:10px;}
+.pitch-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.pitch-price{font-size:28px;font-weight:900;color:#1a1a1a;}
+.pitch-com-badge{background:#d1fae5;color:#064e3b;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;}
+.pitch-includes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.pitch-tag{padding:5px 11px;border-radius:20px;background:var(--bg);border:1px solid var(--b);font-size:12px;color:var(--t);font-weight:500;}
+.pitch-btn{width:100%;padding:14px;background:#1a1a1a;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;}
+/* MAP DARK */
+.map-dark{border-radius:16px;overflow:hidden;border:1px solid #333;margin-bottom:12px;background:#1a1a2e;}
+.map-frame{width:100%;height:380px;border:none;display:block;filter:invert(1) hue-rotate(200deg) brightness(0.8) contrast(1.2);}
+.map-tabs{display:flex;gap:6px;margin-bottom:12px;}
+.mt{flex:1;padding:9px;border-radius:12px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
+.mt.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+.map-loc-bar{display:none;align-items:center;justify-content:space-between;background:#1a1a2e;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
+.map-loc-name{font-size:13px;font-weight:700;color:#a78bfa;}
+.map-reset{background:transparent;border:none;font-size:12px;color:#7c6aff;font-weight:600;cursor:pointer;}
+.map-pin-list{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.map-pin-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--b);cursor:pointer;transition:background .1s;}
 .map-pin-item:last-child{border-bottom:none;}
 .map-pin-item:active{background:var(--bg);}
-.map-pin-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
-.map-pin-info{flex:1;}
-.map-pin-name{font-size:13px;font-weight:700;color:var(--t);}
+.map-pin-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.map-pin-name{font-size:13px;font-weight:700;}
 .map-pin-addr{font-size:11px;color:var(--m);margin-top:1px;}
-.map-pin-right{font-size:11px;font-weight:600;color:var(--amb);}
-.map-pin-open{font-size:10px;color:var(--green);background:#e8f5e9;padding:2px 6px;border-radius:8px;font-weight:600;}
-
-/* PRODUCT details */
-.prod-addr{display:flex;align-items:flex-start;gap:8px;background:#f0f4ff;border:1px solid #dce8ff;border-radius:10px;padding:10px 12px;margin-bottom:8px;}
-.prod-addr-ico{font-size:16px;flex-shrink:0;margin-top:1px;}
-.prod-addr-text{font-size:12px;color:#1e3a5f;line-height:1.5;}
-.prod-addr-label{font-size:10px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
-
+/* WEATHER */
+.wg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;}
+.wd{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:9px 5px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);cursor:pointer;}
+.wd.sel{border-color:#1a1a1a;border-width:2px;}
+.wd-day{font-size:10px;color:var(--m);margin-bottom:4px;font-weight:500;}
+.wd-ico{font-size:22px;margin-bottom:3px;line-height:1;}
+.wd-t{font-size:14px;font-weight:800;}
+.wd-min{font-size:9px;color:var(--m);margin-top:1px;}
+.w-alert{background:#fff3e0;border:1px solid #ffe0b2;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:#e65100;display:none;font-weight:500;}
+.w-alert.on{display:block;}
+.w-detail{background:var(--card);border:1px solid var(--b);border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.w-detail-h{padding:12px 15px;border-bottom:1px solid var(--b);}
+.w-detail-title{font-size:15px;font-weight:800;}
+.w-detail-sub{font-size:11px;color:var(--m);margin-top:2px;}
+.w-hourly{display:flex;gap:7px;overflow-x:auto;padding:12px 15px;scrollbar-width:none;}
+.w-hourly::-webkit-scrollbar{display:none;}
+.wh{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:50px;padding:9px 5px;border-radius:12px;border:1px solid var(--b);background:var(--bg);}
+.wh.now{background:#1a1a1a;border-color:#1a1a1a;}
+.wh-t{font-size:10px;color:var(--m);font-weight:600;}
+.wh.now .wh-t{color:rgba(255,255,255,.6);}
+.wh-ico{font-size:19px;}
+.wh-temp{font-size:14px;font-weight:800;}
+.wh.now .wh-temp{color:#fff;}
+.wh-rain{font-size:10px;color:var(--blue);font-weight:700;}
+.wh.now .wh-rain{color:#93c5fd;}
+.w-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 15px 13px;}
+.wstat{background:var(--bg);border-radius:10px;padding:9px;text-align:center;}
+.wstat-ico{font-size:16px;margin-bottom:3px;}
+.wstat-val{font-size:13px;font-weight:800;}
+.wstat-lbl{font-size:10px;color:var(--m);margin-top:1px;}
+.w-advice{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:13px;margin-bottom:12px;}
+.wa-title{font-size:11px;font-weight:700;color:var(--green);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+.wa-row{font-size:12px;color:var(--m);padding:2px 0;}
+/* TRACKER */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.scard{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:13px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.scard-lbl{font-size:10px;color:var(--m);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;font-weight:500;}
+.scard-val{font-size:22px;font-weight:800;}
+/* OBJECTIF */
+.obj-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:14px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.obj-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.obj-title{font-size:13px;font-weight:700;}
+.obj-count{font-size:18px;font-weight:800;color:var(--pur);}
+.obj-bar-bg{height:10px;background:var(--bg);border-radius:10px;overflow:hidden;border:1px solid var(--b);}
+.obj-bar-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:10px;transition:width .4s ease;}
+.obj-sub{font-size:11px;color:var(--m);margin-top:6px;}
+.add-btn{width:100%;padding:14px;background:#1a1a1a;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:14px;}
+.si{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:11px 13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.si-l{font-size:13px;font-weight:600;}
+.si-m{font-size:11px;color:var(--m);margin-top:2px;}
+.si-p{font-size:14px;font-weight:800;}
+.si-c{font-size:11px;color:var(--green);font-weight:600;}
+/* CLIENTS */
+.client-card{background:var(--card);border:1px solid var(--b);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.client-h{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;}
+.client-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;}
+.client-name{font-size:14px;font-weight:700;}
+.client-sub{font-size:11px;color:var(--m);margin-top:1px;}
+.client-body{border-top:1px solid var(--b);padding:12px 15px;background:#fafafa;}
+.client-info-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--b);font-size:12px;}
+.client-info-row:last-child{border-bottom:none;}
+.client-info-lbl{color:var(--m);font-weight:500;}
+.client-info-val{color:var(--t);font-weight:600;text-align:right;}
+.client-actions{display:flex;gap:8px;margin-top:10px;}
+.client-action-btn{flex:1;padding:9px;border-radius:10px;border:1px solid var(--b);background:var(--bg);color:var(--t);font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
+.client-action-btn.primary{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--b);border-radius:12px;padding:10px 14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.search-bar input{flex:1;border:none;background:transparent;font-size:14px;color:var(--t);outline:none;}
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;}
+.mo.on{display:flex;}
+.mo-box{background:#fff;border-radius:24px 24px 0 0;padding:20px 16px 44px;width:100%;max-height:90vh;overflow-y:auto;}
+.mo-title{font-size:17px;font-weight:800;margin-bottom:16px;}
+.mi{width:100%;padding:11px 13px;background:var(--bg);border:1px solid var(--b);border-radius:12px;color:var(--t);font-size:14px;margin-bottom:8px;-webkit-appearance:none;font-family:inherit;}
+.mi:focus{outline:none;border-color:#1a1a1a;}
+.po{padding:11px 13px;background:var(--bg);border:1px solid var(--b);border-radius:12px;margin-bottom:7px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.po.on{border-color:#1a1a1a;background:#f0f0f0;}
+.mc{width:100%;padding:14px;background:#1a1a1a;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;}
+.mca{width:100%;padding:11px;background:transparent;border:1px solid var(--b);border-radius:14px;color:var(--m);font-size:14px;cursor:pointer;margin-top:8px;}
 /* WHATSAPP */
 .lt{display:flex;gap:5px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none;}
 .lt::-webkit-scrollbar{display:none;}
-.lt-b{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;font-weight:600;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.lt-b.on{background:var(--t);color:#fff;border-color:var(--t);}
-.fsel{width:100%;padding:11px 14px;background:var(--card);border:1px solid var(--b);border-radius:12px;color:var(--t);font-size:13px;margin-bottom:10px;-webkit-appearance:none;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.fprev{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:14px;margin-bottom:12px;font-size:12px;line-height:1.8;color:#555;white-space:pre-line;min-height:100px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-.cbtn{width:100%;padding:14px;background:var(--t);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;}
+.lt-b{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:12px;font-weight:600;cursor:pointer;}
+.lt-b.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+.fsel{width:100%;padding:11px 13px;background:var(--card);border:1px solid var(--b);border-radius:12px;color:var(--t);font-size:13px;margin-bottom:10px;-webkit-appearance:none;}
+.fprev{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:13px;margin-bottom:12px;font-size:12px;line-height:1.8;color:#555;white-space:pre-line;min-height:100px;}
+.cbtn{width:100%;padding:14px;background:#1a1a1a;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;}
+.empty{text-align:center;padding:40px 20px;color:var(--m);font-size:13px;}
+/* PITCH TOGGLE */
+.view-toggle{display:flex;gap:6px;margin-bottom:12px;}
+.vt-btn{flex:1;padding:9px;border-radius:12px;border:1px solid var(--b);background:var(--card);color:var(--m);font-size:13px;font-weight:600;cursor:pointer;text-align:center;}
+.vt-btn.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
 </style>
 </head>
 <body>
@@ -251,64 +230,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 <div class="hdr">
   <div><div class="hdr-logo">CILEX PRO</div><div class="hdr-sub">@realcilexibiza · 2026</div></div>
   <div class="wbtn" onclick="showSc('meteo')">
-    <span class="wbtn-ico" id="wico">⏳</span>
-    <span class="wbtn-t" id="wt">--°</span>
+    <span id="wico">⏳</span>
+    <span id="wt" style="font-size:13px;font-weight:600;">--°</span>
   </div>
 </div>
 
 <!-- CLUBS -->
 <div class="sc on" id="sc-clubs">
-  <div class="sec-header sh-clubs"><span class="sec-ico">🎧</span><div><div class="sec-title">Clubs</div><div class="sec-sub">Prix & DJs du soir</div></div></div>
+  <div class="sec-hdr sh-clubs"><span class="si">🎧</span><div><div class="st">Clubs</div><div class="ss2">Prix & DJs — clique pour tout voir</div></div></div>
   <div class="dp" id="dp"></div>
   <div id="cl"></div>
 </div>
 
 <!-- PRODUITS -->
 <div class="sc" id="sc-products">
-  <div class="sec-header sh-products"><span class="sec-ico">🛥️</span><div><div class="sec-title">Nos Produits</div><div class="sec-sub">Prix & commissions CILEX</div></div></div>
+  <div class="sec-hdr sh-products"><span class="si">🛥️</span><div><div class="st">Nos Produits</div><div class="ss2">Prix, adresses & commissions</div></div></div>
+  <div class="view-toggle">
+    <button class="vt-btn on" onclick="setView('list',this)">📋 Liste</button>
+    <button class="vt-btn" onclick="setView('pitch',this)">⚡ Mode Pitch</button>
+  </div>
   <div id="pl"></div>
 </div>
 
 <!-- CARTE -->
 <div class="sc" id="sc-map">
-  <div class="sec-header sh-map"><span class="sec-ico">🗺️</span><div><div class="sec-title">Carte Ibiza</div><div class="sec-sub">Clique sur un lieu pour le voir sur la carte</div></div></div>
+  <div class="sec-hdr sh-map"><span class="si">🗺️</span><div><div class="st" style="color:#fff;">Carte Ibiza</div><div class="ss2">Clique sur un lieu → zoom sur la carte</div></div></div>
   <div class="map-tabs">
     <button class="mt on" onclick="switchMap('clubs',this)">🎧 Clubs</button>
     <button class="mt" onclick="switchMap('products',this)">🛥️ Produits</button>
     <button class="mt" onclick="switchMap('plages',this)">🏖️ Plages</button>
   </div>
-  <div id="map-location-bar" style="display:none;align-items:center;justify-content:space-between;background:#ede9fe;border-radius:10px;padding:8px 12px;margin-bottom:8px;">
-    <span id="map-location-title" style="font-size:13px;font-weight:700;color:#4c1d95;"></span>
-    <button onclick="resetMap()" style="background:transparent;border:none;font-size:12px;color:#7c3aed;font-weight:600;cursor:pointer;">← Vue générale</button>
+  <div class="map-loc-bar" id="map-loc-bar">
+    <span class="map-loc-name" id="map-loc-name"></span>
+    <button class="map-reset" onclick="resetMap()">← Vue île</button>
   </div>
-  <div class="map-wrap"><iframe class="map-frame" id="mapframe" src="" allowfullscreen loading="lazy"></iframe></div>
+  <div class="map-dark"><iframe class="map-frame" id="mapframe" src="" allowfullscreen loading="lazy"></iframe></div>
   <div class="map-pin-list" id="maplist"></div>
 </div>
 
 <!-- METEO -->
 <div class="sc" id="sc-meteo">
-  <div class="sec-header sh-meteo"><span class="sec-ico">🌤️</span><div><div class="sec-title">Météo Ibiza</div><div class="sec-sub">Prévisions 7 jours en direct</div></div></div>
-  <div class="w-alert" id="walert">⚠️ Pluie prévue — évite les boat parties et excursions Formentera</div>
+  <div class="sec-hdr sh-meteo"><span class="si">🌤️</span><div><div class="st">Météo Ibiza</div><div class="ss2">7 jours · Clique un jour → horaires détaillés</div></div></div>
+  <div class="w-alert" id="walert">⚠️ Pluie — évite boat parties & Formentera</div>
   <div class="wg" id="wg"></div>
-  <div class="w-day-pills" id="w-day-pills"></div>
-  <div id="w-detail"></div>
-  <div class="w-advice" id="wadv"><div class="wa-title">✅ Produits recommandés</div><div id="wadv-c"></div></div>
+  <div class="w-detail" id="w-detail"></div>
+  <div class="w-advice" id="wadv"><div class="wa-title">Produits recommandés</div><div id="wadv-c"></div></div>
 </div>
-
-<!-- DJs screen removed - integrated into clubs -->
 
 <!-- TRACKER -->
 <div class="sc" id="sc-tracker">
-  <div class="sec-header sh-tracker"><span class="sec-ico">💰</span><div><div class="sec-title">Mes Ventes</div><div class="sec-sub">Commissions & historique</div></div></div>
+  <div class="sec-hdr sh-tracker"><span class="si">💰</span><div><div class="st">Mes Ventes</div><div class="ss2">Commissions & objectifs</div></div></div>
+  <div class="obj-card" id="obj-card"></div>
   <div class="sg" id="sg"></div>
-  <button class="add-btn" onclick="openMo()">+ Nouvelle vente</button>
+  <button class="add-btn" onclick="openMo('sale')">+ Nouvelle vente</button>
   <div class="lbl">Historique</div>
   <div id="slist"></div>
 </div>
 
+<!-- CLIENTS -->
+<div class="sc" id="sc-clients">
+  <div class="sec-hdr sh-clients"><span class="si">👥</span><div><div class="st">Mes Clients</div><div class="ss2">Carnet de contacts & historique</div></div></div>
+  <div class="search-bar"><span>🔍</span><input id="client-search" placeholder="Rechercher un client..." oninput="renderClients()"></div>
+  <button class="add-btn" onclick="openMo('client')" style="background:#db2777;">+ Ajouter un client</button>
+  <div id="clients-list"></div>
+</div>
+
 <!-- WHATSAPP -->
 <div class="sc" id="sc-wa">
-  <div class="sec-header sh-wa"><span class="sec-ico">💬</span><div><div class="sec-title">Fiches WhatsApp</div><div class="sec-sub">5 langues — copie en 1 tap</div></div></div>
+  <div class="sec-hdr sh-wa"><span class="si">💬</span><div><div class="st">Fiches WhatsApp</div><div class="ss2">5 langues — copie en 1 tap</div></div></div>
   <div class="lt" id="lt"></div>
   <div class="lbl" style="margin-top:4px;">Produit</div>
   <select class="fsel" id="fprod" onchange="updFiche()">
@@ -322,16 +311,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
   <button class="cbtn" id="cbtn" onclick="cpFiche()">📤 Copier pour WhatsApp</button>
 </div>
 
-<!-- MODAL -->
-<div class="mo" id="mo">
+<!-- SALE MODAL -->
+<div class="mo" id="mo-sale">
   <div class="mo-box">
-    <div class="mo-title">Nouvelle vente</div>
-    <input class="mi" id="mn" placeholder="Nom du client" type="text">
-    <input class="mi" id="mnat" placeholder="Nationalité" type="text">
-    <div class="lbl">Produit</div>
-    <div id="mprods"></div>
+    <div class="mo-title">💰 Nouvelle vente</div>
+    <input class="mi" id="s-client" placeholder="Nom du client *" type="text">
+    <input class="mi" id="s-nat" placeholder="Nationalité (ex: Français, Italian...)" type="text">
+    <div class="lbl">Produit vendu</div>
+    <div id="sale-prods"></div>
     <button class="mc" onclick="saveSale()">Enregistrer ✓</button>
-    <button class="mca" onclick="closeMo()">Annuler</button>
+    <button class="mca" onclick="closeMo('sale')">Annuler</button>
+  </div>
+</div>
+
+<!-- CLIENT MODAL -->
+<div class="mo" id="mo-client">
+  <div class="mo-box">
+    <div class="mo-title">👤 Nouveau client</div>
+    <input class="mi" id="c-name" placeholder="Prénom & Nom *" type="text">
+    <input class="mi" id="c-phone" placeholder="Téléphone / WhatsApp" type="tel">
+    <input class="mi" id="c-hotel" placeholder="Hôtel / Logement" type="text">
+    <input class="mi" id="c-nat" placeholder="Nationalité" type="text">
+    <input class="mi" id="c-note" placeholder="Note (ex: groupe de 6, aime la house...)" type="text">
+    <div class="lbl">Produit acheté (optionnel)</div>
+    <div id="client-prods"></div>
+    <button class="mc" onclick="saveClient()">Ajouter le client ✓</button>
+    <button class="mca" onclick="closeMo('client')">Annuler</button>
   </div>
 </div>
 
@@ -341,297 +346,360 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
   <button class="nb nb-map" onclick="showSc('map',this)"><span class="i">🗺️</span>Carte</button>
   <button class="nb nb-meteo" onclick="showSc('meteo',this)"><span class="i">🌤️</span>Météo</button>
   <button class="nb nb-tracker" onclick="showSc('tracker',this)"><span class="i">💰</span>Ventes</button>
+  <button class="nb nb-clients" onclick="showSc('clients',this)"><span class="i">👥</span>Clients</button>
   <button class="nb nb-wa" onclick="showSc('wa',this)"><span class="i">💬</span>Fiches</button>
 </nav>
 
 <script>
 const DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-const DAYSFULL=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+const DAYS_FULL=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
 
+// Horaires d'ouverture réels — null = fermé ce jour
+// Chinois: jeu/sam/dim confirmés, mer Trip confirmed
 const CLUBS=[
-  {name:'Hï Ibiza',emo:'🔮',loc:'Playa d\'en Bossa',addr:'Platja d\'en Bossa, s/n',lat:38.878,lng:1.406,open:'23:30',close:'06:00',
+  {name:'Hï Ibiza',emo:'🔮',loc:'Playa d\'en Bossa',addr:'Platja d\'en Bossa, s/n',lat:38.878,lng:1.406,
+   open:'23:30',close:'06:00',
+   // ouvert lun-dim toute la saison
+   schedule:[{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'},{open:'23:30',close:'06:00'}],
    prices:[50,50,55,60,65,100,50],
-   djs:['Francis Mercier','East End Dubs','Meduza & James Hype','Hugel','Dom Dolla','Black Coffee','Mestiza'],
-   gl:'Guestlist disponible via CILEX — contactez avant 23h',
-   tags:['Top 100 #2','House/Techno'],desc:'Ancien mythique Space Ibiza. Classé #2 mondial.',
-   transport:{bus:'Discobus ligne 1 — départ toutes les 30min depuis Ibiza Town (3€)',taxi:'~15€ depuis Ibiza Town · ~35€ depuis San Antonio',walk:'5 min à pied depuis Ushuaïa'}},
-  {name:'Ushuaïa',emo:'🌴',loc:'Playa d\'en Bossa',addr:'Platja d\'en Bossa, 10',lat:38.882,lng:1.403,open:'17:00',close:'23:00',
-   prices:[110,120,80,85,120,65,90],
-   djs:['David Guetta','Calvin Harris','Tomorrowland','Martin Garrix','Calvin Harris','ANTS','Swedish House Mafia'],
+   djs:['Francis Mercier','East End Dubs','Meduza & James Hype','Hugel','Dom Dolla','Black Coffee','Glitterbox'],
+   gl:'Guestlist disponible via CILEX — avant 23h30',
+   tags:['Top 100 #2','House/Techno'],desc:'Ex-Space Ibiza. Élu meilleur club mondial. 5 000 pers.',
+   transport:{bus:'Discobus ligne 1 · 3€ depuis Ibiza Town',taxi:'~15€ Ibiza Town · ~35€ San Antonio',walk:'5 min depuis Ushuaïa'}},
+  {name:'Ushuaïa',emo:'🌴',loc:'Playa d\'en Bossa',addr:'Platja d\'en Bossa, 10',lat:38.882,lng:1.403,
+   open:'17:00',close:'23:00',
+   schedule:[{open:'17:00',close:'23:00'},null,{open:'17:00',close:'23:00'},null,{open:'17:00',close:'23:00'},{open:'17:00',close:'23:00'},{open:'17:00',close:'23:00'}],
+   prices:[110,null,80,null,120,65,90],
+   djs:['David Guetta','—','Tomorrowland','—','Calvin Harris','ANTS','Swedish House Mafia'],
    gl:'Guestlist VIP — tarif préférentiel CILEX',
-   tags:['Open-air','Journée 17h–23h','Mainstream'],desc:'Fêtes en journée bord de piscine. Artistes world-class.',
-   transport:{bus:'Discobus ligne 1 depuis Ibiza Town (3€)',taxi:'~15€ depuis Ibiza Town · ~35€ depuis San Antonio',walk:'Playa d\'en Bossa — zone hôtelière'}},
-  {name:'Amnesia',emo:'🌀',loc:'San Rafael',addr:'Ctra. Ibiza a San Antonio, km 5',lat:38.937,lng:1.397,open:'23:59',close:'06:00',
-   prices:[50,60,60,50,60,40,50],
-   djs:['Kettama','Joseph Capriati','SOON','Josh Baker','Glitterbox','Bresh','SOON'],
+   tags:['Open-air','Journée 17h–23h'],desc:'Fêtes en journée bord de piscine. Artistes world-class.',
+   transport:{bus:'Discobus ligne 1 · 3€',taxi:'~15€ Ibiza Town',walk:'Playa d\'en Bossa'}},
+  {name:'Amnesia',emo:'🌀',loc:'San Rafael',addr:'Ctra. Ibiza a San Antonio, km 5',lat:38.937,lng:1.397,
+   open:'23:59',close:'06:00',
+   schedule:[{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},null,null,{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'}],
+   prices:[50,60,null,null,60,40,50],
+   djs:['Kettama','Joseph Capriati','—','—','Glitterbox','Bresh','SOON'],
    gl:'Guestlist disponible — prix réduit via CILEX',
-   tags:['Légendaire','8 000 pers.','House/Techno'],desc:'Élu meilleur club mondial 2006-2007-2008. Capacité 8000.',
-   transport:{bus:'Discobus ligne 3 San Antonio–Amnesia (3€)',taxi:'~20€ depuis Ibiza Town · ~10€ depuis San Antonio',walk:'Impossible — route principale. Taxi ou discobus obligatoire'}},
-  {name:'Pacha',emo:'🍒',loc:'Ibiza Town',addr:'Av. 8 d\'Agost, s/n',lat:38.909,lng:1.434,open:'23:00',close:'06:00',
+   tags:['Légendaire','8 000 pers.'],desc:'Meilleur club mondial 2006-2007-2008.',
+   transport:{bus:'Discobus ligne 3 · 3€',taxi:'~20€ Ibiza Town · ~10€ San Antonio',walk:'Impossible — taxi obligatoire'}},
+  {name:'Pacha',emo:'🍒',loc:'Ibiza Town',addr:'Av. 8 d\'Agost, s/n',lat:38.909,lng:1.434,
+   open:'23:00',close:'06:00',
+   schedule:[{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},null],
    prices:[35,40,35,40,70,40,null],
    djs:['Sonny Fodera','Vintage Culture','Blondish','Purple Disco Machine','Music On','Robin Schulz / Flower Power','—'],
-   gl:'Guestlist Pacha — tarif CILEX disponible',
-   tags:['Emblématique','House'],desc:'Le club le plus iconique d\'Ibiza depuis 1973.',
-   transport:{bus:'À pied depuis le port d\'Ibiza (10 min)',taxi:'~10€ depuis centre Ibiza',walk:'10 min à pied depuis le port'}},
-  {name:'Chinois',emo:'🎋',loc:'Ibiza Town',addr:'Av. 8 d\'Agost (Marina)',lat:38.910,lng:1.432,open:'23:00',close:'05:00',
-   prices:[null,null,null,30,null,30,40],
-   djs:['—','—','—','—','—','—','—'],
-   gl:'Accès sélectif — code vestimentaire strict (pantalon long hommes)',
-   tags:['Intimiste','Sélectif','Smart casual'],desc:'Club sélectif et chic. Dress code strict. Ambiance exclusive.',
-   transport:{bus:'À pied depuis le port d\'Ibiza',taxi:'~8€ depuis centre',walk:'5 min du port d\'Ibiza'}},
-  {name:'[UNVRS]',emo:'🔱',loc:'San Rafael',addr:'Ctra. Ibiza a San Antonio (ex-Privilege)',lat:38.940,lng:1.385,open:'23:00',close:'06:00',
+   gl:'Guestlist Pacha — tarif CILEX',
+   tags:['Emblématique','House/Commercial'],desc:'Le club le plus iconique d\'Ibiza depuis 1973.',
+   transport:{bus:'À pied depuis le port (10 min)',taxi:'~10€ Ibiza Town',walk:'10 min du port d\'Ibiza'}},
+  {name:'Chinois',emo:'🎋',loc:'Marina Botafoch',addr:'Ibiza Gran Hotel, Marina Botafoch',lat:38.912,lng:1.440,
+   open:'23:30',close:'05:30',
+   // Mer=Trip, Jeu=Defected, Sam=The Masquerade (Claptone), Dim=SAGA
+   schedule:[null,null,{open:'23:30',close:'05:30'},{open:'23:30',close:'05:30'},null,{open:'23:30',close:'05:30'},{open:'23:30',close:'05:30'}],
+   prices:[null,null,30,35,null,40,35],
+   djs:['—','—','TRIP (Seth Troxler...)','Defected Records','—','The Masquerade (Claptone)','SAGA (Bedouin)'],
+   gl:'Accès sélectif — dress code strict (pantalon long hommes)',
+   tags:['Underground','Intimiste','Marina Botafoch'],desc:'1 000 pers. Cadre luxueux. Son exceptionnel. Mer/Jeu/Sam/Dim.',
+   transport:{bus:'À pied depuis Pacha (5 min)',taxi:'~10€ Ibiza Town',walk:'5 min de Pacha et Lío'}},
+  {name:'[UNVRS]',emo:'🔱',loc:'San Rafael',addr:'Ctra. Ibiza a San Antonio (ex-Privilege)',lat:38.940,lng:1.385,
+   open:'23:00',close:'06:00',
+   schedule:[{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'}],
    prices:[60,80,85,80,100,95,90],
    djs:['John Summit','Anyma','Jamie Jones','Fisher','David Guetta','ELROW','Carl Cox'],
    gl:'Nouveau 2025 — guestlist CILEX prioritaire',
-   tags:['Nouveau 2025','Hyperclub','Ex-Privilege'],desc:'Nouveau hyperclub 2025. Ex-Privilege. Technologie immersive.',
-   transport:{bus:'Discobus ligne 3 depuis San Antonio (3€)',taxi:'~22€ depuis Ibiza Town · ~12€ depuis San Antonio',walk:'Impossible — hors ville'}},
-  {name:'Es Paradis',emo:'🏛️',loc:'San Antonio',addr:'C/ Salvador Espriu, 2',lat:38.979,lng:1.312,open:'23:00',close:'06:00',
+   tags:['Hyperclub','10 000 pers.','Ex-Privilege'],desc:'Le plus grand club d\'Ibiza. 10 000 pers. 4 salles.',
+   transport:{bus:'Discobus ligne 3 · 3€ depuis San Antonio',taxi:'~22€ Ibiza Town · ~12€ San Antonio',walk:'Impossible — taxi obligatoire'}},
+  {name:'Es Paradis',emo:'🏛️',loc:'San Antonio',addr:'C/ Salvador Espriu, 2',lat:38.979,lng:1.312,
+   open:'23:00',close:'06:00',
+   schedule:[{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'}],
    prices:[25,30,25,30,35,35,25],
-   djs:['Resident DJ','Resident DJ','Fiesta del Agua','Resident DJ','Resident DJ','Resident DJ','Resident DJ'],
-   gl:'Guestlist disponible — parmi les moins chers d\'Ibiza',
-   tags:['50 ans en 2026','San Antonio','Fiesta del Agua'],desc:'Inauguré en 1975. 50 ans en 2026. Célèbre pour la Fiesta del Agua.',
-   transport:{bus:'À pied depuis le centre de San Antonio (2 min)',taxi:'~25€ depuis Ibiza Town · ~5€ depuis San Antonio',walk:'Centre de San Antonio — accessible à pied'}},
-  {name:'Eden',emo:'🌿',loc:'San Antonio',addr:'C/ Salvador Espriu, 1',lat:38.979,lng:1.311,open:'23:00',close:'06:00',
+   djs:['Resident DJ','Ibiza Records (vinyle)','Resident DJ','Resident DJ','Resident DJ','Resident DJ','Resident DJ'],
+   gl:'Guestlist — parmi les moins chers d\'Ibiza',
+   tags:['50 ans 2026','Fiesta del Agua'],desc:'1975. 50 ans en 2026. Fiesta del Agua légendaire.',
+   transport:{bus:'À pied centre San Antonio (2 min)',taxi:'~25€ Ibiza Town',walk:'Centre San Antonio'}},
+  {name:'Eden',emo:'🌿',loc:'San Antonio',addr:'C/ Salvador Espriu, 1',lat:38.979,lng:1.311,
+   open:'23:00',close:'06:00',
+   schedule:[{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'},{open:'23:00',close:'06:00'}],
    prices:[20,25,20,25,30,30,20],
    djs:['Resident DJ','Resident DJ','Resident DJ','Resident DJ','Resident DJ','Resident DJ','Resident DJ'],
-   gl:'Guestlist disponible — très accessible',
-   tags:['San Antonio','Underground','British vibe'],desc:'Club culte de San Antonio. Rénové en 2013. Très prisé des Britanniques.',
-   transport:{bus:'À pied depuis le centre de San Antonio',taxi:'~25€ depuis Ibiza Town',walk:'À côté d\'Es Paradis — centre San Antonio'}},
-  {name:'Lío',emo:'🌹',loc:'Marina Botafoch',addr:'Passeig Joan Carles I, 18',lat:38.912,lng:1.437,open:'21:00',close:'04:00',
+   gl:'Guestlist — très accessible',
+   tags:['San Antonio','Underground','British vibe'],desc:'Club culte de San Antonio. Rénové 2013.',
+   transport:{bus:'À pied centre San Antonio',taxi:'~25€ Ibiza Town',walk:'À côté d\'Es Paradis'}},
+  {name:'Lío',emo:'🌹',loc:'Marina Botafoch',addr:'Passeig Joan Carles I, 18',lat:38.912,lng:1.437,
+   open:'21:00',close:'04:00',
+   schedule:[null,null,null,null,{open:'21:00',close:'04:00'},{open:'21:00',close:'04:00'},null],
    prices:[null,null,null,null,45,55,null],
    djs:['—','—','—','—','Cabaret + DJ','Cabaret + DJ','—'],
-   gl:'Réservation recommandée — ambiance cabaret & dîner-spectacle',
-   tags:['Cabaret','Dîner-spectacle','Vue port'],desc:'Restaurant, bar, cabaret et discothèque. Vue sur le port d\'Ibiza.',
-   transport:{bus:'À pied depuis Pacha (5 min)',taxi:'~10€ depuis centre Ibiza',walk:'5 min à pied depuis Pacha'}},
-  {name:'Swag',emo:'🎤',loc:'Playa d\'en Bossa',addr:'C/ Murtra, 5',lat:38.881,lng:1.408,open:'23:59',close:'06:00',
+   gl:'Réservation recommandée — dîner-spectacle',
+   tags:['Cabaret','Vue port','Ven/Sam'],desc:'Restaurant, cabaret, discothèque. Vue sur le port.',
+   transport:{bus:'À pied depuis Pacha (5 min)',taxi:'~10€ Ibiza Town',walk:'5 min de Pacha'}},
+  {name:'Swag',emo:'🎤',loc:'Playa d\'en Bossa',addr:'C/ Murtra, 5',lat:38.881,lng:1.408,
+   open:'23:59',close:'06:00',
+   schedule:[{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'},{open:'23:59',close:'06:00'}],
    prices:[30,30,30,30,35,40,30],
-   djs:['Hip-Hop/R&B DJ','Mash MeUp!','Lady\'s Night','Hip-Hop/Urban','Urban Night','Weekend Party','Weekend Vibes'],
-   gl:'Entrée facile — le seul club Urban d\'Ibiza',
-   tags:['Urban/Hip-Hop','Reggaeton','1000 pers.'],desc:'Seul club Urban d\'Ibiza. Hip-Hop, Reggaeton, R&B, Latin. Depuis 2014.',
-   transport:{bus:'Discobus ligne 1 (3€) · Playa d\'en Bossa',taxi:'~15€ depuis Ibiza Town · ~35€ depuis San Antonio',walk:'Playa d\'en Bossa — zone hôtelière'}},
-  {name:'Keeper',emo:'🔑',loc:'Marina Botafoch',addr:'Passeig Joan Carles I, s/n',lat:38.913,lng:1.438,open:'22:00',close:'06:00',
+   djs:['Hip-Hop / R&B Night','Mash MeUp!','Lady\'s Night 🎀','Hip-Hop / Urban','Friday Urban Night','Weekend Party 🔥','Weekend Vibes'],
+   gl:'Entrée facile — seul club Urban d\'Ibiza',
+   tags:['Urban / Hip-Hop','Reggaeton','1 000 pers.'],desc:'Reggaeton, Hip-Hop, R&B, Latin. Depuis 2014.',
+   transport:{bus:'Discobus ligne 1 · 3€',taxi:'~15€ Ibiza Town',walk:'Playa d\'en Bossa'}},
+  {name:'Keeper',emo:'🔑',loc:'Marina Botafoch',addr:'Passeig Joan Carles I, s/n',lat:38.913,lng:1.438,
+   open:'22:00',close:'06:00',
+   schedule:[null,null,null,null,{open:'22:00',close:'06:00'},{open:'22:00',close:'06:00'},null],
    prices:[null,null,null,null,15,15,null],
-   djs:['—','—','—','—','Salsa/Latin','Weekend Vibe','—'],
-   gl:'Bar-club ambiance locale — idéal pour commencer la soirée',
-   tags:['Pre-party','Marina Botafoch','Ambiance locale'],desc:'Point de rendez-vous incontournable avant Pacha. Terrasse extérieure.',
-   transport:{bus:'À pied depuis Pacha',taxi:'~10€ depuis centre',walk:'2 min à pied de Pacha et Lío'}}
+   djs:['—','—','—','—','Salsa / Latin Night','Weekend Vibes','—'],
+   gl:'Bar-club pre-party — idéal avant Pacha',
+   tags:['Pre-party','Marina','Ven/Sam'],desc:'Point de rendez-vous avant Pacha. Terrasse extérieure.',
+   transport:{bus:'À pied depuis Pacha',taxi:'~10€ Ibiza Town',walk:'2 min de Pacha et Lío'}}
 ];
 
 const PRODUCTS=[
-  {id:'boat',emo:'⛵',name:'Boat Party',price:100,com:20,dur:'3 heures',
-   dep:'Port d\'Ibiza — Muelle de Botafoch, 16h00',
-   end:'Retour port ~19h00',
-   addrFull:'Muelle de Botafoch, 07800 Ibiza (Eivissa) — Quai des excursions en bateau',
+  {id:'boat',emo:'⛵',name:'Boat Party',price:100,com:20,
+   dep:'Port d\'Ibiza — Muelle de Botafoch',depTime:'16h00',end:'~19h00',
+   addrFull:'Muelle de Botafoch, 07800 Ibiza\nQuai des excursions en bateau',
    lat:38.9095,lng:1.4380,
-   inc:['Open bar illimité (mojitos, sangria, bière, cocktails)','Paella fraîche préparée à bord','DJ set en direct','Baignade en mer cristalline','Animation & ambiance'],
+   img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+   imgBg:'#e0f2fe',
+   inc:['Open bar illimité (mojitos, sangria, bière)','Paella fraîche à bord','DJ set en direct','Baignade en mer','Animation & ambiance'],
+   pitchInc:['🍹 Open bar illimité','🥘 Paella à bord','🎧 DJ set live','🏊 Baignade en mer'],
    desc:'3h de pur plaisir sur les eaux d\'Ibiza.',weather:true},
-  {id:'form',emo:'🏝️',name:'Excursion Formentera',price:140,com:20,dur:'Journée complète',
-   dep:'Port d\'Ibiza — Estació Marítima, 9h00',
-   end:'Retour port ~20h00',
-   addrFull:'Estació Marítima, Av. de Santa Eulària des Riu, 07800 Ibiza — Terminal ferries/excursions',
+  {id:'form',emo:'🏝️',name:'Excursion Formentera',price:140,com:20,
+   dep:'Port d\'Ibiza — Estació Marítima',depTime:'9h00',end:'~20h00',
+   addrFull:'Estació Marítima, Av. Santa Eulària des Riu\n07800 Ibiza — Terminal ferries',
    lat:38.9060,lng:1.4355,
-   inc:['Petit-déjeuner méditerranéen à bord','Arrêt Ses Illetes & S\'Espalmador','Paella fraîche + barbecue retour','Bar ouvert toute la journée','8h de liberté à Formentera'],
+   img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+   imgBg:'#d1fae5',
+   inc:['Petit-déjeuner méditerranéen à bord','Ses Illetes & S\'Espalmador','Paella + BBQ retour','Bar ouvert toute la journée','8h libres à Formentera'],
+   pitchInc:['🌅 Les plus belles plages Méditerranée','🍳 Petit-déj + Paella + BBQ','🍾 Bar ouvert toute la journée','⛵ 8h à Formentera'],
    desc:'Journée sur les plus belles plages de Méditerranée.',weather:true},
-  {id:'tantra',emo:'🍹',name:'Open Bar Tantra',price:60,com:12,dur:'3h open bar',
-   dep:'Tantra Ibiza — Ctra. Platge den Bossa 8, dès 21h00',
-   end:'Fin ~00h00 (ou 01h/02h/03h selon créneau)',
-   addrFull:'Ctra. Platge den Bossa, 8 — Edificio Pepe, 07817 Sant Jordi de Ses Salines, Ibiza\n100m de Hï Ibiza & Ushuaïa',
+  {id:'tantra',emo:'🍹',name:'Open Bar Tantra',price:60,com:12,
+   dep:'Tantra Ibiza — Ctra. Platge den Bossa 8',depTime:'dès 21h00',end:'00h/01h/02h/03h (4 créneaux)',
+   addrFull:'Ctra. Platge den Bossa, 8 — Edificio Pepe\n07817 Sant Jordi, Ibiza\n100m de Hï & Ushuaïa',
    lat:38.8814,lng:1.4068,
-   inc:['3h boissons premium illimitées (4 créneaux au choix)','Vodka Absolut, Gin Bombay, Whisky JW Red','Bière Heineken, Vins rouge/blanc/rosé','Accès Temple Club inclus','3 espaces: terrasse, jardin, discothèque'],
-   desc:'Pré-soirée incontournable à 100m de Hï & Ushuaïa.',weather:false},
-  {id:'cat',emo:'🛥️',name:'VIP Catamaran',price:100,com:20,dur:'3 heures',
-   dep:'Port d\'Ibiza — Muelle de Botafoch, à confirmer',
-   end:'Retour port ~3h après départ',
-   addrFull:'Muelle de Botafoch, 07800 Ibiza (Eivissa) — Quai des catamarans VIP',
+   img:'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=80',
+   imgBg:'#fef3c7',
+   inc:['3h boissons premium illimitées','Vodka Absolut, Gin Bombay, Whisky JW','Heineken, Vins, Cocktails','Accès Temple Club inclus','3 espaces: terrasse, jardin, disco'],
+   pitchInc:['🍸 3h open bar premium','🎧 DJ sets toute la nuit','💃 3 espaces différents','🎟️ Accès club inclus'],
+   desc:'Pré-soirée incontournable. 100m de Hï & Ushuaïa.',weather:false},
+  {id:'cat',emo:'🛥️',name:'VIP Catamaran',price:100,com:20,
+   dep:'Port d\'Ibiza — Muelle de Botafoch',depTime:'à confirmer',end:'~3h après départ',
+   addrFull:'Muelle de Botafoch, 07800 Ibiza\nQuai des catamarans VIP',
    lat:38.9095,lng:1.4380,
+   img:'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=600&q=80',
+   imgBg:'#e0f2fe',
    inc:['Open bar 3h (sangria, mojito, caïpiroska)','Paella préparée à bord','DJ international premium','Baignade en eaux cristallines','Jusqu\'à 150 personnes'],
-   desc:'Expérience VIP exclusive sur catamaran.',weather:true},
-  {id:'rig',emo:'🍽️',name:'Dîner Rigatoni',price:80,com:16,dur:'Soirée complète',
-   dep:'Rigatoni Ibiza — Marina Botafoch, 22h00',
-   end:'After-party jusqu\'à ~04h00',
-   addrFull:'Passeig Joan Carles I, 18 — Marina Botafoch, 07800 Ibiza\nEn face du port, à 5 min de Pacha à pied',
+   pitchInc:['🍾 Open bar 3h','🥘 Paella à bord','🎧 DJ premium','🏊 Baignade cristalline'],
+   desc:'Expérience VIP exclusive sur catamaran. 150 pers.',weather:true},
+  {id:'rig',emo:'🍽️',name:'Dîner Rigatoni',price:80,com:16,
+   dep:'Rigatoni Ibiza — Marina Botafoch',depTime:'22h00',end:'After-party ~04h00',
+   addrFull:'Passeig Joan Carles I, 18 — Marina Botafoch\n07800 Ibiza · 5 min de Pacha à pied',
    lat:38.9123,lng:1.4382,
-   inc:['Menu 3 plats (Mer ou Terre)','1 bouteille vin / 4 pers + eau','Musique live & DJ set pendant dîner','Show & performances','After-party — tables = piste de danse'],
-   desc:'Gastronomie italienne + show + after-party à Marina Botafoch.',weather:false}
+   img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
+   imgBg:'#fce7f3',
+   inc:['Menu 3 plats (Mer ou Terre)','1 bouteille vin / 4 pers + eau','Musique live & DJ set','Show & performances','After-party — tables = piste de danse'],
+   pitchInc:['🍝 Menu 3 plats gastronomique','🎭 Show & performances live','🍷 Vin inclus','💃 After-party jusqu\'à 4h'],
+   desc:'Gastronomie italienne + show + after-party.',weather:false}
 ];
 
 const FICHES={
-  boat:{fr:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ live · Open bar · Baignade\n⏰ 16h00 — Port d'Ibiza\n⏱ 3 heures\n✅ Open bar (mojitos, sangria, bière)\n✅ Paella fraîche à bord\n✅ Animation & DJ set\n💰 *100€/pers*\n📲 @realcilexibiza`,
-   en:`⛵ *IBIZA BOAT PARTY* 🌊\n🎧 Live DJ · Open bar · Swimming\n⏰ 4:00 PM — Ibiza Port\n⏱ 3 hours\n✅ Open bar (mojitos, sangria, beer)\n✅ Fresh paella on board\n✅ Entertainment & DJ\n💰 *€100/person*\n📲 @realcilexibiza`,
-   es:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ en directo · Barra libre · Baño\n⏰ 16:00 — Puerto de Ibiza\n⏱ 3 horas\n✅ Barra libre (mojitos, sangría, cerveza)\n✅ Paella fresca a bordo\n💰 *100€/persona*\n📲 @realcilexibiza`,
-   it:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ live · Open bar · Nuotata\n⏰ 16:00 — Porto di Ibiza\n⏱ 3 ore\n✅ Open bar (mojito, sangria, birra)\n✅ Paella fresca a bordo\n💰 *100€/persona*\n📲 @realcilexibiza`,
-   pt:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ ao vivo · Open bar · Banho\n⏰ 16h00 — Porto de Ibiza\n⏱ 3 horas\n✅ Open bar (mojitos, sangria, cerveja)\n✅ Paella fresca a bordo\n💰 *100€/pessoa*\n📲 @realcilexibiza`},
-  form:{fr:`🏝️ *EXCURSION FORMENTERA* ✨\nJournée complète — île paradisiaque\n⏰ 9h00 — Port d'Ibiza · Retour ~20h\n✅ Petit-déj méditerranéen à bord\n✅ Ses Illetes — plus belle plage Méditerranée\n✅ Paella + BBQ retour\n✅ Bar ouvert toute la journée\n✅ 8h libres à Formentera\n💰 *140€/pers*\n📲 @realcilexibiza`,
-   en:`🏝️ *FORMENTERA EXCURSION* ✨\nFull day — paradise island\n⏰ 9:00 AM — Ibiza Port · Return ~8:00 PM\n✅ Mediterranean breakfast on board\n✅ Ses Illetes — best beach in Mediterranean\n✅ Paella + BBQ on return\n✅ Open bar all day\n✅ 8h free in Formentera\n💰 *€140/person*\n📲 @realcilexibiza`,
-   es:`🏝️ *EXCURSIÓN FORMENTERA* ✨\nDía completo — isla paraíso\n⏰ 9:00 — Puerto Ibiza · Regreso ~20:00\n✅ Desayuno mediterráneo a bordo\n✅ Ses Illetes — mejor playa del Mediterráneo\n✅ Paella + barbacoa de vuelta\n✅ Barra libre todo el día\n💰 *140€/persona*\n📲 @realcilexibiza`,
-   it:`🏝️ *ESCURSIONE FORMENTERA* ✨\nGiornata intera — isola paradiso\n⏰ 9:00 — Porto Ibiza · Ritorno ~20:00\n✅ Colazione mediterranea a bordo\n✅ Ses Illetes — spiaggia più bella del Med.\n✅ Paella + barbecue al ritorno\n✅ Open bar tutto il giorno\n💰 *140€/persona*\n📲 @realcilexibiza`,
-   pt:`🏝️ *EXCURSÃO FORMENTERA* ✨\nDia completo — ilha paraíso\n⏰ 9h00 — Porto Ibiza · Retorno ~20h\n✅ Pequeno-almoço mediterrâneo\n✅ Ses Illetes — melhor praia do Mediterrâneo\n✅ Paella + churrasco na volta\n✅ Open bar o dia todo\n💰 *140€/pessoa*\n📲 @realcilexibiza`},
-  tantra:{fr:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — dès 21h\n⏱ 3h open bar à volonté\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vins, Cocktails\n✅ Accès discothèque inclus\n💰 *60€/pers*\n📲 @realcilexibiza`,
-   en:`🍹 *TANTRA IBIZA OPEN BAR* 🎧\nPlaya d'en Bossa — from 9:00 PM\n⏱ 3h all-you-can-drink\n✅ Absolut Vodka, Bombay Gin, Johnnie Walker\n✅ Heineken, Wines, Cocktails\n✅ Nightclub access included\n💰 *€60/person*\n📲 @realcilexibiza`,
-   es:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — desde las 21:00\n⏱ 3h barra libre\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vinos, Cócteles\n✅ Acceso discoteca incluido\n💰 *60€/persona*\n📲 @realcilexibiza`,
-   it:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — dalle 21:00\n⏱ 3h open bar\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vini, Cocktail\n✅ Accesso discoteca incluso\n💰 *60€/persona*\n📲 @realcilexibiza`,
-   pt:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — a partir das 21h\n⏱ 3h open bar\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vinhos, Cocktails\n✅ Acesso discoteca incluído\n💰 *60€/pessoa*\n📲 @realcilexibiza`},
-  cat:{fr:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Port d'Ibiza (horaire à confirmer)\n⏱ 3h · Jusqu'à 150 personnes\n✅ Open bar (sangria, mojito, caïpiroska)\n✅ Paella à bord\n✅ DJ international premium\n✅ Baignade en eaux cristallines\n💰 *100€/pers*\n📲 @realcilexibiza`,
-   en:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Ibiza Port (time TBC)\n⏱ 3h · Up to 150 people\n✅ Open bar (sangria, mojito, caipiroska)\n✅ Paella on board\n✅ Premium international DJ\n✅ Swimming in crystal clear water\n💰 *€100/person*\n📲 @realcilexibiza`,
-   es:`🛥️ *CATAMARAN VIP PARTY* 🍾\n⏰ Puerto Ibiza (hora a confirmar)\n⏱ 3h · Hasta 150 personas\n✅ Barra libre (sangría, mojito, caipiroska)\n✅ Paella a bordo\n✅ DJ internacional premium\n💰 *100€/persona*\n📲 @realcilexibiza`,
-   it:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Porto Ibiza (orario da confermare)\n⏱ 3h · Fino a 150 persone\n✅ Open bar (sangria, mojito, caipiroska)\n✅ Paella a bordo\n✅ DJ internazionale premium\n💰 *100€/persona*\n📲 @realcilexibiza`,
-   pt:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Porto Ibiza (horário a confirmar)\n⏱ 3h · Até 150 pessoas\n✅ Open bar (sangria, mojito, caipiroska)\n✅ Paella a bordo\n✅ DJ internacional premium\n💰 *100€/pessoa*\n📲 @realcilexibiza`},
-  rig:{fr:`🍽️ *DÎNER SPECTACLE RIGATONI* 🎭\nRigatoni Ibiza — vue mer — 20h00\n✅ Menu 3 plats (Mer ou Terre)\n✅ 1 bouteille vin / 4 pers + eau\n✅ Musique live & DJ set\n✅ Show & performances\n✅ After-party — tables = piste 💃\n💰 *80€/pers*\n📲 @realcilexibiza`,
-   en:`🍽️ *RIGATONI DINNER SHOW* 🎭\nRigatoni Ibiza — sea view — 8:00 PM\n✅ 3-course menu (Sea or Land)\n✅ 1 bottle wine / 4 people + water\n✅ Live music & DJ set\n✅ Show & performances\n✅ After-party — tables become dancefloor 💃\n💰 *€80/person*\n📲 @realcilexibiza`,
-   es:`🍽️ *CENA ESPECTÁCULO RIGATONI* 🎭\nRigatoni Ibiza — vista mar — 20:00\n✅ Menú 3 platos (Mar o Tierra)\n✅ 1 botella vino / 4 pers + agua\n✅ Música live & DJ\n✅ After-party — pista de baile 💃\n💰 *80€/persona*\n📲 @realcilexibiza`,
-   it:`🍽️ *CENA SPETTACOLO RIGATONI* 🎭\nRigatoni Ibiza — vista mare — 20:00\n✅ Menu 3 portate (Mare o Terra)\n✅ 1 bottiglia vino / 4 pers + acqua\n✅ Musica live & DJ\n✅ After-party — tavoli = pista 💃\n💰 *80€/persona*\n📲 @realcilexibiza`,
-   pt:`🍽️ *JANTAR ESPETÁCULO RIGATONI* 🎭\nRigatoni Ibiza — vista mar — 20h00\n✅ Menu 3 pratos (Mar ou Terra)\n✅ 1 garrafa vinho / 4 pes + água\n✅ Música ao vivo & DJ\n✅ After-party — mesas = pista 💃\n💰 *80€/pessoa*\n📲 @realcilexibiza`}
+  boat:{fr:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ live · Open bar · Baignade\n⏰ 16h00 — Port d'Ibiza\n⏱ 3 heures\n✅ Open bar (mojitos, sangria, bière)\n✅ Paella fraîche à bord\n✅ DJ set & animation\n💰 *100€/pers*\n📲 @realcilexibiza`,en:`⛵ *IBIZA BOAT PARTY* 🌊\n🎧 Live DJ · Open bar · Swimming\n⏰ 4:00 PM — Ibiza Port\n⏱ 3 hours\n✅ Open bar (mojitos, sangria, beer)\n✅ Fresh paella on board\n✅ DJ & entertainment\n💰 *€100/person*\n📲 @realcilexibiza`,es:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ en directo · Barra libre · Baño\n⏰ 16:00 — Puerto de Ibiza\n⏱ 3 horas\n✅ Barra libre (mojitos, sangría)\n✅ Paella fresca a bordo\n💰 *100€/persona*\n📲 @realcilexibiza`,it:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ live · Open bar · Nuotata\n⏰ 16:00 — Porto di Ibiza\n⏱ 3 ore\n✅ Open bar (mojito, sangria, birra)\n✅ Paella fresca a bordo\n💰 *100€/persona*\n📲 @realcilexibiza`,pt:`⛵ *BOAT PARTY IBIZA* 🌊\n🎧 DJ ao vivo · Open bar · Banho\n⏰ 16h00 — Porto de Ibiza\n⏱ 3 horas\n✅ Open bar (mojitos, sangria)\n✅ Paella fresca a bordo\n💰 *100€/pessoa*\n📲 @realcilexibiza`},
+  form:{fr:`🏝️ *EXCURSION FORMENTERA* ✨\nJournée complète — île paradisiaque\n⏰ 9h00 — Port d'Ibiza · Retour ~20h\n✅ Petit-déj méditerranéen à bord\n✅ Ses Illetes — plus belle plage Méditerranée\n✅ Paella + BBQ retour\n✅ Bar ouvert toute la journée\n✅ 8h libres à Formentera\n💰 *140€/pers*\n📲 @realcilexibiza`,en:`🏝️ *FORMENTERA EXCURSION* ✨\nFull day — paradise island\n⏰ 9:00 AM — Ibiza Port · Return ~8 PM\n✅ Mediterranean breakfast on board\n✅ Ses Illetes — best beach in Mediterranean\n✅ Paella + BBQ on return\n✅ Open bar all day\n✅ 8h free in Formentera\n💰 *€140/person*\n📲 @realcilexibiza`,es:`🏝️ *EXCURSIÓN FORMENTERA* ✨\nDía completo — isla paraíso\n⏰ 9:00 — Puerto Ibiza · Regreso ~20:00\n✅ Desayuno mediterráneo\n✅ Ses Illetes — mejor playa del Mediterráneo\n✅ Paella + barbacoa\n✅ Barra libre todo el día\n💰 *140€/persona*\n📲 @realcilexibiza`,it:`🏝️ *ESCURSIONE FORMENTERA* ✨\nGiornata intera — isola paradiso\n⏰ 9:00 — Porto Ibiza · Ritorno ~20:00\n✅ Colazione mediterranea\n✅ Ses Illetes — spiaggia più bella del Med.\n✅ Paella + barbecue al ritorno\n✅ Open bar tutto il giorno\n💰 *140€/persona*\n📲 @realcilexibiza`,pt:`🏝️ *EXCURSÃO FORMENTERA* ✨\nDia completo — ilha paraíso\n⏰ 9h00 — Porto Ibiza · Retorno ~20h\n✅ Pequeno-almoço mediterrâneo\n✅ Ses Illetes — melhor praia do Mediterrâneo\n✅ Paella + churrasco\n✅ Open bar o dia todo\n💰 *140€/pessoa*\n📲 @realcilexibiza`},
+  tantra:{fr:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — dès 21h\n⏱ 3h open bar à volonté\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vins, Cocktails\n✅ Accès discothèque inclus\n💰 *60€/pers*\n📲 @realcilexibiza`,en:`🍹 *TANTRA IBIZA OPEN BAR* 🎧\nPlaya d'en Bossa — from 9:00 PM\n⏱ 3h all-you-can-drink\n✅ Absolut Vodka, Bombay Gin, Johnnie Walker\n✅ Heineken, Wines, Cocktails\n✅ Nightclub access included\n💰 *€60/person*\n📲 @realcilexibiza`,es:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — desde las 21:00\n⏱ 3h barra libre\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vinos, Cócteles\n✅ Acceso discoteca incluido\n💰 *60€/persona*\n📲 @realcilexibiza`,it:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — dalle 21:00\n⏱ 3h open bar\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vini, Cocktail\n✅ Accesso discoteca incluso\n💰 *60€/persona*\n📲 @realcilexibiza`,pt:`🍹 *OPEN BAR TANTRA IBIZA* 🎧\nPlaya d'en Bossa — a partir das 21h\n⏱ 3h open bar\n✅ Vodka Absolut, Gin Bombay, Whisky JW\n✅ Heineken, Vinhos, Cocktails\n✅ Acesso discoteca incluído\n💰 *60€/pessoa*\n📲 @realcilexibiza`},
+  cat:{fr:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Port d'Ibiza (horaire à confirmer)\n⏱ 3h · Jusqu'à 150 personnes\n✅ Open bar (sangria, mojito, caïpiroska)\n✅ Paella à bord · DJ premium\n✅ Baignade en eaux cristallines\n💰 *100€/pers*\n📲 @realcilexibiza`,en:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Ibiza Port (time TBC)\n⏱ 3h · Up to 150 people\n✅ Open bar (sangria, mojito, caipiroska)\n✅ Paella on board · Premium DJ\n✅ Swimming in crystal clear water\n💰 *€100/person*\n📲 @realcilexibiza`,es:`🛥️ *CATAMARAN VIP PARTY* 🍾\n⏰ Puerto Ibiza (hora a confirmar)\n⏱ 3h · Hasta 150 personas\n✅ Barra libre + Paella + DJ premium\n✅ Baño en aguas cristalinas\n💰 *100€/persona*\n📲 @realcilexibiza`,it:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Porto Ibiza (orario da confermare)\n⏱ 3h · Fino a 150 persone\n✅ Open bar + Paella + DJ premium\n✅ Nuotata in acque cristalline\n💰 *100€/persona*\n📲 @realcilexibiza`,pt:`🛥️ *VIP CATAMARAN PARTY* 🍾\n⏰ Porto Ibiza (horário a confirmar)\n⏱ 3h · Até 150 pessoas\n✅ Open bar + Paella + DJ premium\n✅ Banho em águas cristalinas\n💰 *100€/pessoa*\n📲 @realcilexibiza`},
+  rig:{fr:`🍽️ *DÎNER SPECTACLE RIGATONI* 🎭\nRigatoni Ibiza — Marina Botafoch — 22h00\n✅ Menu 3 plats (Mer ou Terre)\n✅ 1 bouteille vin / 4 pers + eau\n✅ Musique live & DJ set\n✅ Show & performances\n✅ After-party jusqu'à 4h 💃\n💰 *80€/pers*\n📲 @realcilexibiza`,en:`🍽️ *RIGATONI DINNER SHOW* 🎭\nRigatoni Ibiza — Marina Botafoch — 10:00 PM\n✅ 3-course menu (Sea or Land)\n✅ 1 bottle wine / 4 people + water\n✅ Live music & DJ set · Show\n✅ After-party until 4 AM 💃\n💰 *€80/person*\n📲 @realcilexibiza`,es:`🍽️ *CENA ESPECTÁCULO RIGATONI* 🎭\nRigatoni Ibiza — Marina Botafoch — 22:00\n✅ Menú 3 platos + vino + agua\n✅ Música live & DJ · Show\n✅ After-party hasta las 4h 💃\n💰 *80€/persona*\n📲 @realcilexibiza`,it:`🍽️ *CENA SPETTACOLO RIGATONI* 🎭\nRigatoni Ibiza — Marina Botafoch — 22:00\n✅ Menu 3 portate + vino + acqua\n✅ Musica live & DJ · Show\n✅ After-party fino alle 4h 💃\n💰 *80€/persona*\n📲 @realcilexibiza`,pt:`🍽️ *JANTAR ESPETÁCULO RIGATONI* 🎭\nRigatoni Ibiza — Marina Botafoch — 22h00\n✅ Menu 3 pratos + vinho + água\n✅ Música ao vivo & DJ · Show\n✅ After-party até às 4h 💃\n💰 *80€/pessoa*\n📲 @realcilexibiza`}
 };
 
 const LANGS=[{c:'fr',f:'🇫🇷',n:'FR'},{c:'en',f:'🇬🇧',n:'EN'},{c:'es',f:'🇪🇸',n:'ES'},{c:'it',f:'🇮🇹',n:'IT'},{c:'pt',f:'🇧🇷',n:'PT'}];
-const MAP_URLS={
-  clubs:'https://www.openstreetmap.org/export/embed.html?bbox=1.29%2C38.87%2C1.52%2C38.98&layer=mapnik',
-  products:'https://www.openstreetmap.org/export/embed.html?bbox=1.38%2C38.875%2C1.46%2C38.925&layer=mapnik',
-  plages:'https://www.openstreetmap.org/export/embed.html?bbox=1.25%2C38.86%2C1.55%2C39.01&layer=mapnik'
-};
-// Individual location maps (clicking opens OSM centered on location)
-function openLocationMap(lat,lng,name){
-  const url=`https://www.openstreetmap.org/export/embed.html?bbox=${lng-.008}%2C${lat-.005}%2C${lng+.008}%2C${lat+.005}&layer=mapnik&marker=${lat}%2C${lng}`;
-  document.getElementById('mapframe').src=url;
-  document.getElementById('map-location-title').textContent='📍 '+name;
-  document.getElementById('map-location-bar').style.display='flex';
-  // scroll to map
-  document.getElementById('mapframe').scrollIntoView({behavior:'smooth',block:'start'});
-}
+const AVATAR_COLORS=['#7c3aed','#0369a1','#15803d','#db2777','#d97706','#dc2626','#0891b2'];
 
 // STATE
 let selDay=(()=>{let d=new Date().getDay();return d===0?6:d-1;})();
 let selLang='fr';
 let selMapType='clubs';
 let expandedClubs=new Set();
-let expandedProds=new Set();
 let expandedDjClubs=new Set();
+let expandedProds=new Set();
+let expandedClients=new Set();
 let selModalProd=null;
-let sales=JSON.parse(localStorage.getItem('cilex_v2')||'[]');
+let selClientProd=null;
+let prodView='list';
+let selWeatherDay=0;
 let weather=[];
+let hourlyWeather=[];
+let sales=JSON.parse(localStorage.getItem('cilex_sales')||'[]');
+let clients=JSON.parse(localStorage.getItem('cilex_clients')||'[]');
+const OBJ_WEEK=100;
 
+// HELPERS
 function pc(p){if(!p)return'pr-cl';if(p<=35)return'pr-lo';if(p<=65)return'pr-mi';return'pr-hi';}
+function todayIdx(){let d=new Date().getDay();return d===0?6:d-1;}
+function weekStart(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-todayIdx());return d;}
+function thisWeekSales(){const ws=weekStart();return sales.filter(s=>new Date(s.ts||s.date)>=ws);}
 
 // CLUBS
 function renderDayPills(){
-  const today=(()=>{let d=new Date().getDay();return d===0?6:d-1;})();
+  const ti=todayIdx();
   document.getElementById('dp').innerHTML=DAYS.map((d,i)=>
-    `<button class="dp-p ${i===selDay?'on':''}" onclick="selD(${i})">${d}${i===today?'·':''}</button>`
+    `<button class="dp-p ${i===selDay?'on':''}" onclick="selD(${i})">${d}${i===ti?'·':''}</button>`
   ).join('');
 }
 function selD(i){selDay=i;renderDayPills();renderClubs();}
+
+function getClubStatus(club,dayIdx){
+  const now=new Date();
+  const h=now.getHours();
+  const sched=club.schedule[dayIdx];
+  if(!sched)return'closed';
+  const openH=parseInt(sched.open.split(':')[0]);
+  // open after openH or before 6am (late night)
+  if(h>=openH||h<6)return'open';
+  // opens tonight (within 3h)
+  if(h>=openH-3)return'soon';
+  return'soon';
+}
+
 function renderClubs(){
-  const todayIdx=(()=>{let d=new Date().getDay();return d===0?6:d-1;})();
-  const sorted=[...CLUBS].map(c=>({...c,p:c.prices[selDay],dj:c.djs[selDay]}))
-    .sort((a,b)=>{if(!a.p&&b.p)return 1;if(a.p&&!b.p)return -1;return a.p-b.p;});
+  const ti=todayIdx();
+  const sorted=[...CLUBS].map(c=>({...c,p:c.prices[selDay],dj:c.djs[selDay],sched:c.schedule[selDay]}))
+    .sort((a,b)=>{if(!a.p&&b.p)return 1;if(a.p&&!b.p)return-1;return a.p-b.p;});
   document.getElementById('cl').innerHTML=sorted.map(c=>{
     const open=expandedClubs.has(c.name);
     const djOpen=expandedDjClubs.has(c.name);
-    const closed=!c.p;
+    const closed=!c.p||!c.sched;
     const safeN=c.name.replace(/['\[\]]/g,'_');
+    const status=selDay===ti?getClubStatus(c,selDay):'scheduled';
+    const badgeHTML=closed?`<span class="cc-badge badge-closed">Fermé</span>`:
+      selDay===ti&&status==='open'?`<span class="cc-badge badge-open">Ouvert</span>`:
+      selDay===ti&&status==='soon'?`<span class="cc-badge badge-soon">Ouvre ${c.sched?.open||''}</span>`:'';
     const djWeekRows=DAYS.map((d,i)=>`
-      <div class="dj-w-row ${i===todayIdx?'today-row':''}">
+      <div class="dj-w-row ${i===ti?'tod':''}">
         <span class="dj-w-day">${d}</span>
-        <span class="dj-w-name">${c.djs[i]}</span>
+        <span class="dj-w-name">${c.schedule[i]?c.djs[i]:'— Fermé'}</span>
         <span class="dj-w-price ${pc(c.prices[i])}">${c.prices[i]?'€'+c.prices[i]:'—'}</span>
       </div>`).join('');
     return`<div class="cc">
       <div class="cc-h" onclick="togClub('${safeN}')">
-        <div class="cc-left"><span class="cc-emo">${c.emo}</span><span class="cc-nm">${c.name}</span></div>
-        <div class="cc-right">
+        <div class="cc-left">
+          <div class="cc-emo">${c.emo}</div>
+          <div><div class="cc-nm">${c.name}</div>${badgeHTML}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
           <span class="cc-pr ${pc(c.p)}">${c.p?'€'+c.p:'Fermé'}</span>
           <span class="cc-arr ${open&&!closed?'open':''}">▼</span>
         </div>
       </div>
       ${open&&!closed?`<div class="cc-body">
-        <div class="cc-dj">🎧 Ce soir : ${c.dj}</div>
+        <div class="cc-tonight">🎧 Ce soir : ${c.dj}</div>
         <div class="tags">
           <span class="tag loc">📍 ${c.loc}</span>
-          <span class="tag tm">⏰ ${c.open}–${c.close}</span>
+          <span class="tag tm">⏰ ${c.sched?.open||''}–${c.sched?.close||''}</span>
           ${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}
         </div>
         <div class="cc-gl">🎟️ ${c.gl}</div>
-        <div class="cc-desc">${c.desc}</div>
         <div class="cc-transport">
-          <div class="transport-title">🚌 Comment y aller</div>
-          <div class="transport-row">🚌 ${c.transport.bus}</div>
-          <div class="transport-row">🚕 ${c.transport.taxi}</div>
-          <div class="transport-row">🚶 ${c.transport.walk}</div>
+          <div class="tr-title">🚌 Comment y aller</div>
+          <div class="tr-row">🚌 ${c.transport.bus}</div>
+          <div class="tr-row">🚕 ${c.transport.taxi}</div>
+          <div class="tr-row">🚶 ${c.transport.walk}</div>
         </div>
+        <button style="width:100%;margin-top:10px;padding:8px;background:#f0f4ff;border:1px solid #dce8ff;border-radius:10px;color:#3b82f6;font-size:12px;font-weight:700;cursor:pointer;" onclick="event.stopPropagation();showOnMap(${c.lat},${c.lng},'${c.name}')">🗺️ Voir sur la carte</button>
       </div>
       <div class="dj-sub">
         <div class="dj-sub-h" onclick="event.stopPropagation();togDjClub('${safeN}')">
           <span class="dj-sub-title">🎵 Programme semaine complète</span>
           <span class="dj-sub-arr ${djOpen?'open':''}">▼</span>
         </div>
-        ${djOpen?`<div class="dj-week-rows">${djWeekRows}</div>`:''}
+        ${djOpen?`<div class="dj-rows">${djWeekRows}</div>`:''}
       </div>`:''}
     </div>`;
   }).join('');
 }
-function togClub(n){
-  if(expandedClubs.has(n))expandedClubs.delete(n);else expandedClubs.add(n);
-  renderClubs();
-}
+function togClub(n){if(expandedClubs.has(n))expandedClubs.delete(n);else expandedClubs.add(n);renderClubs();}
+function togDjClub(n){if(expandedDjClubs.has(n))expandedDjClubs.delete(n);else expandedDjClubs.add(n);renderClubs();}
 
 // PRODUCTS
-function renderProds(){
-  const hasRain=weather.length>0&&weather[0].rain;
-  document.getElementById('pl').innerHTML=PRODUCTS.map(p=>{
-    const open=expandedProds.has(p.id);
-    return`<div class="pc">
-      <div class="pc-h" onclick="togProd('${p.id}')">
-        <div class="pc-info"><span class="pc-emo">${p.emo}</span><div><div class="pc-nm">${p.name}</div><div class="pc-meta">⏰ ${p.dep.split('—')[1]||p.dep}</div></div></div>
-        <div class="pc-right"><div class="pc-pr">€${p.price}</div><div class="pc-com">+€${p.com} com.</div></div>
-      </div>
-      ${open?`<div class="pc-body">
-        <div class="prod-addr">
-          <span class="prod-addr-ico">📍</span>
-          <div>
-            <div class="prod-addr-label">Adresse & départ</div>
-            <div class="prod-addr-text">${p.addrFull}</div>
-          </div>
-        </div>
-        <div class="prod-addr" style="background:#f0fff4;border-color:#c6f6d5;">
-          <span class="prod-addr-ico">🕐</span>
-          <div>
-            <div class="prod-addr-label" style="color:#276749;">Horaires</div>
-            <div class="prod-addr-text" style="color:#1a4731;">Départ : ${p.dep.split('—')[1]||p.dep}<br>${p.end}</div>
-          </div>
-        </div>
-        <ul class="pc-inc">${p.inc.map(i=>`<li>${i}</li>`).join('')}</ul>
-        <div class="pc-weather ${p.weather?(hasRain?'pw-no':'pw-ok'):'pw-ok'}">
-          ${p.weather?(hasRain?'⚠️ Déconseillé si pluie — à reporter':'☀️ Parfait par beau temps'):'✅ Possible tous temps'}
-        </div>
-        <button style="width:100%;margin-top:10px;padding:9px;background:#f0eefe;border:1px solid #ddd6fe;border-radius:10px;color:#7c3aed;font-size:12px;font-weight:700;cursor:pointer;" onclick="showOnMap(${p.lat},${p.lng},'${p.name}')">🗺️ Voir sur la carte</button>
-      </div>`:''}
-    </div>`;
-  }).join('');
-}
-function togProd(id){
-  if(expandedProds.has(id))expandedProds.delete(id);else expandedProds.add(id);
+let prodViewMode='list';
+function setView(v,btn){
+  prodViewMode=v;
+  document.querySelectorAll('.vt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
   renderProds();
 }
-function showOnMap(lat,lng,name){
-  showSc('map');
-  setTimeout(()=>openLocationMap(lat,lng,name),100);
+function renderProds(){
+  const hasRain=weather.length>0&&weather[0].rain;
+  if(prodViewMode==='pitch'){
+    document.getElementById('pl').innerHTML=PRODUCTS.map(p=>`
+      <div class="pitch-card">
+        <div class="pitch-img-placeholder" style="background:${p.imgBg}">${p.emo}</div>
+        <div class="pitch-body">
+          <div class="pitch-name">${p.name}</div>
+          <div class="pitch-sub">⏰ Départ ${p.depTime} · ${p.dep.split('—')[0]}</div>
+          <div class="pitch-price-row">
+            <div class="pitch-price">€${p.price}<span style="font-size:14px;font-weight:400;color:var(--m)">/pers</span></div>
+            <div class="pitch-com-badge">+€${p.com} com.</div>
+          </div>
+          <div class="pitch-includes">${p.pitchInc.map(i=>`<span class="pitch-tag">${i}</span>`).join('')}</div>
+          <button class="pitch-btn" onclick="openMo('sale')">Ajouter une vente</button>
+        </div>
+      </div>`).join('');
+  } else {
+    document.getElementById('pl').innerHTML=PRODUCTS.map(p=>{
+      const open=expandedProds.has(p.id);
+      return`<div class="pc">
+        <div class="pc-h" onclick="togProd('${p.id}')">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:44px;height:44px;border-radius:10px;background:${p.imgBg};display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${p.emo}</div>
+            <div><div class="pc-nm">${p.name}</div><div class="pc-meta">⏰ ${p.depTime} · ${p.dep.split('—')[0]}</div></div>
+          </div>
+          <div style="text-align:right;">
+            <div class="pc-pr">€${p.price}</div>
+            <div class="pc-com">+€${p.com} com.</div>
+          </div>
+        </div>
+        ${open?`<div class="pc-body">
+          <div class="prod-addr">
+            <span style="font-size:16px;">📍</span>
+            <div><div class="prod-addr-lbl">Adresse & départ</div><div class="prod-addr-txt">${p.addrFull}</div></div>
+          </div>
+          <div class="prod-addr" style="background:#f0fff4;border-color:#c6f6d5;">
+            <span style="font-size:16px;">🕐</span>
+            <div><div class="prod-addr-lbl" style="color:#276749;">Horaires</div><div class="prod-addr-txt" style="color:#1a4731;">Départ : ${p.depTime}<br>Fin : ${p.end}</div></div>
+          </div>
+          <ul class="pc-inc">${p.inc.map(i=>`<li>${i}</li>`).join('')}</ul>
+          <div class="pw ${p.weather?(hasRain?'pw-no':'pw-ok'):'pw-ok'}">
+            ${p.weather?(hasRain?'⚠️ Pluie prévue — à reporter':'☀️ Parfait par beau temps'):'✅ Possible tous temps'}
+          </div>
+          <button style="width:100%;margin-top:8px;padding:9px;background:#f0eefe;border:1px solid #ddd6fe;border-radius:10px;color:#7c3aed;font-size:12px;font-weight:700;cursor:pointer;" onclick="showOnMap(${p.lat},${p.lng},'${p.name}')">🗺️ Voir sur la carte</button>
+        </div>`:''}</div>`;
+    }).join('');
+  }
 }
+function togProd(id){if(expandedProds.has(id))expandedProds.delete(id);else expandedProds.add(id);renderProds();}
 
 // MAP
+const MAP_URLS={
+  clubs:'https://www.openstreetmap.org/export/embed.html?bbox=1.29%2C38.87%2C1.52%2C38.98&layer=mapnik',
+  products:'https://www.openstreetmap.org/export/embed.html?bbox=1.38%2C38.875%2C1.46%2C38.925&layer=mapnik',
+  plages:'https://www.openstreetmap.org/export/embed.html?bbox=1.25%2C38.86%2C1.55%2C39.01&layer=mapnik'
+};
+function openLocationMap(lat,lng,name){
+  const url=`https://www.openstreetmap.org/export/embed.html?bbox=${lng-.01}%2C${lat-.006}%2C${lng+.01}%2C${lat+.006}&layer=mapnik&marker=${lat}%2C${lng}`;
+  document.getElementById('mapframe').src=url;
+  document.getElementById('map-loc-name').textContent='📍 '+name;
+  document.getElementById('map-loc-bar').style.display='flex';
+  document.getElementById('mapframe').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetMap(){
+  document.getElementById('map-loc-bar').style.display='none';
+  document.getElementById('mapframe').src=MAP_URLS[selMapType];
+}
+function showOnMap(lat,lng,name){showSc('map');setTimeout(()=>openLocationMap(lat,lng,name),200);}
 function switchMap(type,btn){
   selMapType=type;
   document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.getElementById('map-location-bar').style.display='none';
+  document.getElementById('map-loc-bar').style.display='none';
   document.getElementById('mapframe').src=MAP_URLS[type];
   renderMapList();
 }
-function resetMap(){
-  document.getElementById('map-location-bar').style.display='none';
-  document.getElementById('mapframe').src=MAP_URLS[selMapType];
-}
 function renderMapList(){
-  const BEACH_DATA=[
+  const BEACHES=[
     {n:'Playa d\'en Bossa',d:'Grande plage animée — clubs à 100m',t:'🏖️',lat:38.881,lng:1.407},
     {n:'Ses Illetes (Formentera)',d:'Plus belle plage de Méditerranée',t:'🏝️',lat:38.710,lng:1.407},
     {n:'Cala Bassa',d:'Magnifique baie — Cala Bassa Beach Club',t:'🌊',lat:38.965,lng:1.271},
@@ -644,58 +712,43 @@ function renderMapList(){
     document.getElementById('maplist').innerHTML=CLUBS.map(c=>`
       <div class="map-pin-item" onclick="openLocationMap(${c.lat},${c.lng},'${c.name}')">
         <div class="map-pin-dot" style="background:#7c3aed;"></div>
-        <div class="map-pin-info">
-          <div class="map-pin-name">${c.emo} ${c.name}</div>
-          <div class="map-pin-addr">${c.addr}</div>
-        </div>
-        <span class="map-pin-open">${c.open}</span>
+        <div style="flex:1;"><div class="map-pin-name">${c.emo} ${c.name}</div><div class="map-pin-addr">${c.addr}</div></div>
+        <span style="font-size:10px;color:var(--green);background:#e8f5e9;padding:2px 7px;border-radius:8px;font-weight:600;">${c.open}</span>
       </div>`).join('');
   } else if(selMapType==='products'){
     document.getElementById('maplist').innerHTML=PRODUCTS.map(p=>`
       <div class="map-pin-item" onclick="openLocationMap(${p.lat},${p.lng},'${p.name}')">
         <div class="map-pin-dot" style="background:#d97706;"></div>
-        <div class="map-pin-info">
-          <div class="map-pin-name">${p.emo} ${p.name}</div>
-          <div class="map-pin-addr">${p.addrFull.split('\n')[0]}</div>
-        </div>
+        <div style="flex:1;"><div class="map-pin-name">${p.emo} ${p.name}</div><div class="map-pin-addr">${p.addrFull.split('\n')[0]}</div></div>
         <span style="font-size:12px;font-weight:700;color:#d97706;">€${p.price}</span>
       </div>`).join('');
   } else {
-    document.getElementById('maplist').innerHTML=BEACH_DATA.map(b=>`
+    document.getElementById('maplist').innerHTML=BEACHES.map(b=>`
       <div class="map-pin-item" onclick="openLocationMap(${b.lat},${b.lng},'${b.n}')">
         <div class="map-pin-dot" style="background:#15803d;"></div>
-        <div class="map-pin-info">
-          <div class="map-pin-name">${b.t} ${b.n}</div>
-          <div class="map-pin-addr">${b.d}</div>
-        </div>
-        <span style="font-size:14px;">›</span>
+        <div style="flex:1;"><div class="map-pin-name">${b.t} ${b.n}</div><div class="map-pin-addr">${b.d}</div></div>
+        <span style="font-size:14px;color:var(--m);">›</span>
       </div>`).join('');
   }
 }
 
-// WEATHER — Open-Meteo API (gratuit, sans clé)
-const WMO={0:'Ensoleillé',1:'Peu nuageux',2:'Partiellement nuageux',3:'Couvert',45:'Brouillard',48:'Givre',51:'Bruine légère',53:'Bruine',55:'Bruine forte',61:'Pluie légère',63:'Pluie',65:'Pluie forte',71:'Neige légère',73:'Neige',75:'Neige forte',80:'Averses légères',81:'Averses',82:'Averses fortes',85:'Averses neige',86:'Averses neige fortes',95:'Orage',96:'Orage grêle',99:'Orage grêle forte'};
-const WICO={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌧️',55:'🌧️',61:'🌦️',63:'🌧️',65:'⛈️',71:'🌨️',73:'❄️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
-let hourlyWeather=[];
-let selWeatherDay=0;
+// WEATHER
+const WMO={0:'Ensoleillé',1:'Peu nuageux',2:'Partiellement nuageux',3:'Couvert',45:'Brouillard',51:'Bruine légère',61:'Pluie légère',63:'Pluie',65:'Pluie forte',80:'Averses',81:'Averses',82:'Averses fortes',95:'Orage',99:'Orage fort'};
+const WICO={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',51:'🌦️',61:'🌦️',63:'🌧️',65:'⛈️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',99:'⛈️'};
+const JOURS=['Auj.','Dem.','Mar.','Mer.','Jeu.','Ven.','Sam.'];
 
 async function loadWeather(){
   try{
     const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.9067&longitude=1.4325&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum,windspeed_10m_max,uv_index_max&hourly=temperature_2m,weathercode,precipitation_probability,windspeed_10m&timezone=Europe/Madrid&forecast_days=7');
     const d=await r.json();
     weather=d.daily.time.map((t,i)=>({
-      date:new Date(t),
-      max:Math.round(d.daily.temperature_2m_max[i]),
-      min:Math.round(d.daily.temperature_2m_min[i]),
-      code:d.daily.weathercode[i],
-      rain:d.daily.precipitation_sum[i]>1,
-      wind:Math.round(d.daily.windspeed_10m_max[i]),
-      uv:Math.round(d.daily.uv_index_max[i]||0)
+      date:new Date(t),dayStr:t,
+      max:Math.round(d.daily.temperature_2m_max[i]),min:Math.round(d.daily.temperature_2m_min[i]),
+      code:d.daily.weathercode[i],rain:d.daily.precipitation_sum[i]>1,
+      wind:Math.round(d.daily.windspeed_10m_max[i]),uv:Math.round(d.daily.uv_index_max[i]||0)
     }));
     hourlyWeather=d.hourly.time.map((t,i)=>({
-      time:t,
-      hour:parseInt(t.split('T')[1]),
-      day:t.split('T')[0],
+      time:t,hour:parseInt(t.split('T')[1]),day:t.split('T')[0],
       temp:Math.round(d.hourly.temperature_2m[i]),
       code:d.hourly.weathercode[i],
       rain:d.hourly.precipitation_probability[i],
@@ -703,144 +756,202 @@ async function loadWeather(){
     }));
     document.getElementById('wico').textContent=WICO[weather[0].code]||'☀️';
     document.getElementById('wt').textContent=weather[0].max+'°';
-    renderWeather();
-    renderProds();
-  }catch(e){
-    document.getElementById('wt').textContent='--°';
-    renderWeather();
-  }
+    renderWeather();renderProds();
+  }catch(e){renderWeather();}
 }
 
 function renderWeather(){
-  const JOURS=['Auj.','Dem.','Mar.','Mer.','Jeu.','Ven.','Sam.'];
-  const JOURSFULL=['Aujourd\'hui','Demain','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
   if(!weather.length){
-    document.getElementById('wg').innerHTML=JOURS.map((j,i)=>`<div class="wd ${i===0?'today':''}"><div class="wd-day">${j}</div><div class="wd-ico">⏳</div><div class="wd-t">--</div><div class="wd-d">chargement</div></div>`).join('');
-    document.getElementById('w-day-pills').innerHTML='';
-    document.getElementById('w-detail').innerHTML='';
+    document.getElementById('wg').innerHTML=JOURS.map((j,i)=>`<div class="wd ${i===0?'sel':''}"><div class="wd-day">${j}</div><div class="wd-ico">⏳</div><div class="wd-t">--</div><div class="wd-min">--</div></div>`).join('');
     return;
   }
   const hasRain=weather.slice(0,2).some(w=>w.rain);
   document.getElementById('walert').classList.toggle('on',hasRain);
-
-  // 7-day grid — clickable
   document.getElementById('wg').innerHTML=weather.map((w,i)=>`
-    <div class="wd ${i===0?'today':''} ${i===selWeatherDay?'today':''}" onclick="selWDay(${i})" style="cursor:pointer;${i===selWeatherDay?'border-color:#1a1a1a;border-width:2px;':'' }">
-      <div class="wd-day">${JOURS[i]||'J+'+(i+1)}</div>
+    <div class="wd ${i===selWeatherDay?'sel':''}" onclick="selWD(${i})">
+      <div class="wd-day">${JOURS[i]}</div>
       <div class="wd-ico">${WICO[w.code]||'🌡️'}</div>
       <div class="wd-t">${w.max}°</div>
-      <div class="wd-d" style="font-size:9px;">${w.min}°</div>
+      <div class="wd-min">${w.min}°</div>
     </div>`).join('');
-
-  // Day pills
-  document.getElementById('w-day-pills').innerHTML=weather.map((w,i)=>`
-    <button class="w-day-pill ${i===selWeatherDay?'on':''}" onclick="selWDay(${i})">${JOURS[i]} ${w.max}°</button>`).join('');
-
   renderWeatherDetail();
-
-  // Advice
   const adv=document.getElementById('wadv-c');
-  const today=weather[0];
-  if(today.rain){
+  if(weather[0].rain){
     adv.innerHTML=PRODUCTS.filter(p=>!p.weather).map(p=>`<div class="wa-row">✅ ${p.emo} ${p.name}</div>`).join('');
-    document.querySelector('.wa-title').textContent='☔ Pluie — priorité aux produits couverts';
+    document.querySelector('.wa-title').textContent='☔ Pluie — produits recommandés';
   } else {
     adv.innerHTML=PRODUCTS.map(p=>`<div class="wa-row">✅ ${p.emo} ${p.name}</div>`).join('');
-    document.querySelector('.wa-title').textContent='☀️ Beau temps — tous les produits recommandés';
+    document.querySelector('.wa-title').textContent='☀️ Beau temps — tous les produits OK';
   }
 }
 
-function selWDay(i){
-  selWeatherDay=i;
-  renderWeather();
-}
+function selWD(i){selWeatherDay=i;renderWeather();}
 
 function renderWeatherDetail(){
-  if(!weather.length||!hourlyWeather.length)return;
-  const JOURS=['Aujourd\'hui','Demain','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  if(!weather.length)return;
   const w=weather[selWeatherDay];
-  const dayStr=w.date.toISOString().split('T')[0];
-  const hours=hourlyWeather.filter(h=>h.day===dayStr);
+  const hours=hourlyWeather.filter(h=>h.day===w.dayStr);
   const nowH=new Date().getHours();
-
   const hoursHTML=hours.map(h=>{
     const isNow=selWeatherDay===0&&h.hour===nowH;
-    return`<div class="wh-item ${isNow?'now':''}">
-      <div class="wh-time">${String(h.hour).padStart(2,'0')}h</div>
+    return`<div class="wh ${isNow?'now':''}">
+      <div class="wh-t">${String(h.hour).padStart(2,'0')}h</div>
       <div class="wh-ico">${WICO[h.code]||'🌡️'}</div>
       <div class="wh-temp">${h.temp}°</div>
       <div class="wh-rain">${h.rain}%</div>
     </div>`;
   }).join('');
-
   document.getElementById('w-detail').innerHTML=`
-    <div class="w-detail-card">
-      <div class="w-detail-header">
-        <div>
-          <div class="w-detail-title">${WICO[w.code]} ${JOURS[selWeatherDay]||'J+'+(selWeatherDay+1)} — ${WMO[w.code]||''}</div>
-          <div class="w-detail-sub">${w.min}° min · ${w.max}° max</div>
-        </div>
-      </div>
-      <div class="w-hourly-scroll">${hoursHTML}</div>
-      <div class="w-stats-grid">
-        <div class="w-stat"><div class="w-stat-ico">🌬️</div><div class="w-stat-val">${w.wind} km/h</div><div class="w-stat-lbl">Vent</div></div>
-        <div class="w-stat"><div class="w-stat-ico">🌡️</div><div class="w-stat-val">${w.min}–${w.max}°</div><div class="w-stat-lbl">Températures</div></div>
-        <div class="w-stat"><div class="w-stat-ico">☀️</div><div class="w-stat-val">UV ${w.uv}</div><div class="w-stat-lbl">Indice UV</div></div>
-      </div>
+    <div class="w-detail-h">
+      <div class="w-detail-title">${WICO[w.code]} ${JOURS[selWeatherDay]} — ${WMO[w.code]||''}</div>
+      <div class="w-detail-sub">${w.min}° min · ${w.max}° max</div>
+    </div>
+    <div class="w-hourly">${hoursHTML}</div>
+    <div class="w-stats">
+      <div class="wstat"><div class="wstat-ico">🌬️</div><div class="wstat-val">${w.wind} km/h</div><div class="wstat-lbl">Vent</div></div>
+      <div class="wstat"><div class="wstat-ico">🌡️</div><div class="wstat-val">${w.min}–${w.max}°</div><div class="wstat-lbl">Amplitude</div></div>
+      <div class="wstat"><div class="wstat-ico">☀️</div><div class="wstat-val">UV ${w.uv}</div><div class="wstat-lbl">Indice UV</div></div>
     </div>`;
-}
-
-// DJs COLLAPSIBLE — now inside club cards
-function togDjClub(n){
-  if(expandedDjClubs.has(n))expandedDjClubs.delete(n);else expandedDjClubs.add(n);
-  renderClubs();
 }
 
 // TRACKER
 function renderTracker(){
+  const ws=thisWeekSales();
   const tot=sales.length;
   const rev=sales.reduce((s,v)=>s+v.price,0);
   const com=sales.reduce((s,v)=>s+v.com,0);
-  const td=sales.filter(s=>s.date===new Date().toDateString()).length;
+  const todayS=sales.filter(s=>s.date===new Date().toDateString()).length;
+  const weekCount=ws.length;
+  const pct=Math.min(100,Math.round(weekCount/OBJ_WEEK*100));
+  document.getElementById('obj-card').innerHTML=`
+    <div class="obj-row">
+      <div class="obj-title">🎯 Objectif semaine</div>
+      <div class="obj-count">${weekCount}/${OBJ_WEEK}</div>
+    </div>
+    <div class="obj-bar-bg"><div class="obj-bar-fill" style="width:${pct}%"></div></div>
+    <div class="obj-sub">${OBJ_WEEK-weekCount} tickets restants · ${pct}% atteint cette semaine</div>`;
   document.getElementById('sg').innerHTML=`
-    <div class="sc-card"><div class="sc-lbl">Total ventes</div><div class="sc-val gold">${tot}</div></div>
-    <div class="sc-card"><div class="sc-lbl">Aujourd'hui</div><div class="sc-val">${td}</div></div>
-    <div class="sc-card"><div class="sc-lbl">Revenus</div><div class="sc-val gold">€${rev}</div></div>
-    <div class="sc-card"><div class="sc-lbl">Commissions</div><div class="sc-val gre">€${com}</div></div>`;
-  document.getElementById('slist').innerHTML=sales.length===0?
-    `<div class="empty">Aucune vente — appuie sur + pour ajouter</div>`:
+    <div class="scard"><div class="scard-lbl">Total ventes</div><div class="scard-val">${tot}</div></div>
+    <div class="scard"><div class="scard-lbl">Aujourd'hui</div><div class="scard-val">${todayS}</div></div>
+    <div class="scard"><div class="scard-lbl">Revenus total</div><div class="scard-val">€${rev}</div></div>
+    <div class="scard"><div class="scard-lbl">Commissions</div><div class="scard-val" style="color:var(--green)">€${com}</div></div>`;
+  document.getElementById('slist').innerHTML=!sales.length?`<div class="empty">Aucune vente pour l'instant</div>`:
     [...sales].reverse().map(s=>`
       <div class="si">
-        <div><div class="si-l">${s.emo} ${s.pn}</div><div class="si-m">👤 ${s.client} · ${s.nat} · ${s.date}</div></div>
-        <div class="si-r"><div class="si-p">€${s.price}</div><div class="si-c">+€${s.com}</div></div>
+        <div><div class="si-l">${s.emo} ${s.pn}</div><div class="si-m">👤 ${s.client}${s.nat?' · '+s.nat:''} · ${s.date}</div></div>
+        <div style="text-align:right;"><div class="si-p">€${s.price}</div><div class="si-c">+€${s.com}</div></div>
       </div>`).join('');
 }
 
-function openMo(){
-  selModalProd=null;
-  document.getElementById('mn').value='';
-  document.getElementById('mnat').value='';
-  document.getElementById('mprods').innerHTML=PRODUCTS.map(p=>`
-    <div class="po" id="po-${p.id}" onclick="selProd('${p.id}')">
-      <div class="po-l">${p.emo} ${p.name}</div>
-      <div class="po-r">€${p.price} <span style="color:var(--green);font-size:11px;">+€${p.com}</span></div>
-    </div>`).join('');
-  document.getElementById('mo').classList.add('on');
+// CLIENTS
+function avatarColor(name){return AVATAR_COLORS[name.charCodeAt(0)%AVATAR_COLORS.length];}
+function initials(name){return name.split(' ').map(w=>w[0]?.toUpperCase()||'').join('').slice(0,2)||'?';}
+
+function renderClients(){
+  const q=(document.getElementById('client-search')||{value:''}).value.toLowerCase();
+  const filtered=clients.filter(c=>
+    c.name.toLowerCase().includes(q)||
+    (c.hotel||'').toLowerCase().includes(q)||
+    (c.nat||'').toLowerCase().includes(q)
+  );
+  if(!filtered.length){
+    document.getElementById('clients-list').innerHTML=`<div class="empty">${q?'Aucun client trouvé':'Aucun client — appuie sur + pour ajouter'}</div>`;
+    return;
+  }
+  document.getElementById('clients-list').innerHTML=filtered.map((c,idx)=>{
+    const open=expandedClients.has(idx);
+    const clientSales=sales.filter(s=>s.clientId===c.id);
+    const totalSpent=clientSales.reduce((s,v)=>s+v.price,0);
+    return`<div class="client-card">
+      <div class="client-h" onclick="togClient(${idx})">
+        <div class="client-avatar" style="background:${avatarColor(c.name)}">${initials(c.name)}</div>
+        <div style="flex:1;">
+          <div class="client-name">${c.name}</div>
+          <div class="client-sub">${c.nat||''}${c.hotel?' · '+c.hotel:''} · ${clientSales.length} achat${clientSales.length>1?'s':''}</div>
+        </div>
+        <span style="font-size:10px;color:var(--m);">▼</span>
+      </div>
+      ${open?`<div class="client-body">
+        <div class="client-info-row"><span class="client-info-lbl">📱 Téléphone</span><span class="client-info-val">${c.phone||'—'}</span></div>
+        <div class="client-info-row"><span class="client-info-lbl">🏨 Hôtel</span><span class="client-info-val">${c.hotel||'—'}</span></div>
+        <div class="client-info-row"><span class="client-info-lbl">🌍 Nationalité</span><span class="client-info-val">${c.nat||'—'}</span></div>
+        <div class="client-info-row"><span class="client-info-lbl">💰 Total dépensé</span><span class="client-info-val" style="color:var(--green)">€${totalSpent}</span></div>
+        ${c.note?`<div class="client-info-row"><span class="client-info-lbl">📝 Note</span><span class="client-info-val">${c.note}</span></div>`:''}
+        ${c.prod?`<div class="client-info-row"><span class="client-info-lbl">🎟️ Produit</span><span class="client-info-val">${c.prod}</span></div>`:''}
+        <div class="client-info-row"><span class="client-info-lbl">📅 Ajouté le</span><span class="client-info-val">${c.date||'—'}</span></div>
+        <div class="client-actions">
+          ${c.phone?`<button class="client-action-btn primary" onclick="window.open('https://wa.me/${c.phone.replace(/[^0-9]/g,'')}')">💬 WhatsApp</button>`:''}
+          <button class="client-action-btn" onclick="deleteClient(${idx})">🗑️ Supprimer</button>
+        </div>
+      </div>`:''}
+    </div>`;
+  }).join('');
 }
-function selProd(id){
+function togClient(i){if(expandedClients.has(i))expandedClients.delete(i);else expandedClients.add(i);renderClients();}
+function deleteClient(i){
+  const filtered=clients.filter((_,idx)=>idx!==i);
+  clients=filtered;
+  localStorage.setItem('cilex_clients',JSON.stringify(clients));
+  renderClients();
+}
+
+// MODALS
+function openMo(type){
+  if(type==='sale'){
+    selModalProd=null;
+    document.getElementById('s-client').value='';
+    document.getElementById('s-nat').value='';
+    document.getElementById('sale-prods').innerHTML=PRODUCTS.map(p=>`
+      <div class="po" id="sp-${p.id}" onclick="selSaleProd('${p.id}')">
+        <span>${p.emo} ${p.name}</span>
+        <span style="font-weight:700;">€${p.price} <span style="color:var(--green);font-size:11px;">+€${p.com}</span></span>
+      </div>`).join('');
+    document.getElementById('mo-sale').classList.add('on');
+  } else {
+    selClientProd=null;
+    ['c-name','c-phone','c-hotel','c-nat','c-note'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('client-prods').innerHTML=`<div class="po" id="cp-none" onclick="selClientProd2('none')" style="margin-bottom:7px;"><span>— Aucun pour l'instant</span></div>`+
+      PRODUCTS.map(p=>`<div class="po" id="cp-${p.id}" onclick="selClientProd2('${p.id}')"><span>${p.emo} ${p.name}</span><span style="font-weight:700;">€${p.price}</span></div>`).join('');
+    document.getElementById('mo-client').classList.add('on');
+  }
+}
+function closeMo(type){document.getElementById('mo-'+type).classList.remove('on');}
+function selSaleProd(id){
   selModalProd=id;
-  document.querySelectorAll('.po').forEach(e=>e.classList.remove('on'));
-  document.getElementById('po-'+id).classList.add('on');
+  document.querySelectorAll('[id^="sp-"]').forEach(e=>e.classList.remove('on'));
+  document.getElementById('sp-'+id)?.classList.add('on');
 }
-function closeMo(){document.getElementById('mo').classList.remove('on');}
+function selClientProd2(id){
+  selClientProd=id;
+  document.querySelectorAll('[id^="cp-"]').forEach(e=>e.classList.remove('on'));
+  document.getElementById('cp-'+id)?.classList.add('on');
+}
 function saveSale(){
-  const client=document.getElementById('mn').value.trim()||'Client';
-  const nat=document.getElementById('mnat').value.trim()||'—';
+  const client=document.getElementById('s-client').value.trim()||'Client';
+  const nat=document.getElementById('s-nat').value.trim();
   if(!selModalProd){alert('Sélectionne un produit');return;}
   const p=PRODUCTS.find(x=>x.id===selModalProd);
-  sales.push({client,nat,pn:p.name,emo:p.emo,price:p.price,com:p.com,date:new Date().toDateString()});
-  localStorage.setItem('cilex_v2',JSON.stringify(sales));
-  closeMo();renderTracker();
+  const now=new Date();
+  sales.push({client,nat,pn:p.name,emo:p.emo,price:p.price,com:p.com,date:now.toDateString(),ts:now.toISOString()});
+  localStorage.setItem('cilex_sales',JSON.stringify(sales));
+  closeMo('sale');renderTracker();
+}
+function saveClient(){
+  const name=document.getElementById('c-name').value.trim();
+  if(!name){alert('Entre le nom du client');return;}
+  const p=selClientProd&&selClientProd!=='none'?PRODUCTS.find(x=>x.id===selClientProd):null;
+  const now=new Date();
+  clients.push({
+    id:Date.now(),name,
+    phone:document.getElementById('c-phone').value.trim(),
+    hotel:document.getElementById('c-hotel').value.trim(),
+    nat:document.getElementById('c-nat').value.trim(),
+    note:document.getElementById('c-note').value.trim(),
+    prod:p?p.name:'',
+    date:now.toLocaleDateString('fr-FR')
+  });
+  localStorage.setItem('cilex_clients',JSON.stringify(clients));
+  closeMo('client');renderClients();
 }
 
 // WHATSAPP
@@ -850,15 +961,11 @@ function renderWA(){
   updFiche();
 }
 function selL(c){selLang=c;renderWA();}
-function updFiche(){
-  const prod=document.getElementById('fprod').value;
-  document.getElementById('fprev').textContent=FICHES[prod][selLang];
-}
+function updFiche(){const prod=document.getElementById('fprod').value;document.getElementById('fprev').textContent=FICHES[prod][selLang];}
 function cpFiche(){
   const t=document.getElementById('fprev').textContent;
   navigator.clipboard.writeText(t).then(()=>{
-    const b=document.getElementById('cbtn');
-    b.textContent='✅ Copié !';
+    const b=document.getElementById('cbtn');b.textContent='✅ Copié !';
     setTimeout(()=>b.textContent='📤 Copier pour WhatsApp',2000);
   }).catch(()=>alert(t));
 }
@@ -870,17 +977,17 @@ function showSc(name,btn){
   const el=document.getElementById('sc-'+name);
   if(el)el.classList.add('on');
   if(btn)btn.classList.add('on');
-  else{const idx={clubs:0,products:1,map:2,meteo:3,tracker:4,wa:5}[name];document.querySelectorAll('.nb')[idx]?.classList.add('on');}
-  if(name==='map'){
-    document.getElementById('mapframe').src=MAP_URLS[selMapType];
-    renderMapList();
+  else{
+    const idx={clubs:0,products:1,map:2,meteo:3,tracker:4,clients:5,wa:6}[name];
+    document.querySelectorAll('.nb')[idx]?.classList.add('on');
   }
+  if(name==='map'){document.getElementById('mapframe').src=MAP_URLS[selMapType];renderMapList();}
 }
 
 // INIT
 setTimeout(()=>document.getElementById('splash').classList.add('out'),2000);
 document.getElementById('mapframe').src=MAP_URLS.clubs;
-renderDayPills();renderClubs();renderProds();renderMapList();renderWeather();renderTracker();renderWA();
+renderDayPills();renderClubs();renderProds();renderMapList();renderWeather();renderTracker();renderClients();renderWA();
 loadWeather();
 </script>
 </body>
